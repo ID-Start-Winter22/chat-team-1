@@ -1,4 +1,4 @@
-# Chatbot Projektmodul Start - UNIbot
+# Chatbot Projektmodul Start - HOMIbot
 
 Beschreiben Sie kurz Ihre Projektidee (mit Bild oder Storyboard)
 
