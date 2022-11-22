@@ -1,4 +1,4 @@
-# Chatbot Projektmodul Start - HOMIbot
+# Chatbot Projektmodul Start - ORGIbot
 
 Beschreiben Sie kurz Ihre Projektidee (mit Bild oder Storyboard)
 
