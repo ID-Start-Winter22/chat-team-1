@@ -53,3 +53,8 @@ stories:
   steps:
   - intent: ask_travel_time
   - action: action_get_travel_time
+
+- story : Sag mir welche fächer ich wann habe 
+  steps: 
+    - intent: welches_fach_habe_ich
+    - action: fächerauswahl_tag

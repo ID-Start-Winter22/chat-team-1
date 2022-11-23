@@ -12,16 +12,19 @@ intents:
   - my_name_is
   - bot_challenge_name
   - ask_travel_time
+  - welches_fach_habe_ich
   
 actions:
   - action_store_name
   - action_get_name
   - action_get_travel_time
+  - fächerauswahl_tag
 
 entities:
   - username
   - from_station
   - to_station
+  - wochentag 
 
 slots:
   username:
@@ -42,6 +45,13 @@ slots:
     mappings:
     - type: from_entity
       entity: to_station
+  wochentag:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: wochentag
+  
 
 responses:
   utter_greet:

@@ -10,6 +10,7 @@
 from sys import displayhook
 from typing import Any, Text, Dict, List
 from pyparsing import nestedExpr
+from datetime import datetime
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
@@ -71,3 +72,30 @@ class ActionMVG(Action):
 
         return []
 
+class ActionUserName(Action):
+
+     def name(self):
+         return "fächerauswahl_tag"
+
+     def run(self, dispatcher, tracker, domain):
+        wochentag = (tracker.get_slot("wochentag")).lower()
+        fächerproTag = {'montag': ('Computatuional Thinking','8: 15- 9:45'), 'dienstag' : ('Computatuional Thinking', '10:00 - 11:30'), 'mittwoch': ('Grundlagen interface und Interactionsdesign', '16:30 - 18:00'), 'donnerstag': ('Grundlagen Gestaltung und Typographie', '13:00 - 16:15'), 'freitag': ('Projektmodul Start', '10:30 - 13:30')} 
+        wochentage = ['montag', 'dienstag', 'mittwoch', 'donnerstag', 'freitag']
+        today = datetime.today().weekday()
+        tomorrow = datetime.today().weekday() + 1 
+        dispatcher.utter_message(wochentag)
+        if wochentag in fächerproTag: 
+            dispatcher.utter_message(f'{fächerproTag[wochentag]}')
+
+        if wochentag == 'heute': 
+            
+            today_name = wochentage[today]
+            dispatcher.utter_message(fächerproTag[today_name])
+        if wochentag =='morgen': 
+            tomorrow_name = wochentage[tomorrow]
+            dispatcher.utter_message(fächerproTag[tomorrow_name])
+
+        
+
+
+        return []
