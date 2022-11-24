@@ -147,6 +147,9 @@ nlu:
     - Was habe ich [heute](wochentag) für Fächer? 
     - Was habe ich [morgen](wochentag) für Fächer? 
     - Welche Fächer habe ich [Freitag](wochentag)? 
+    - Welches Fach habe ich [morgen](wochentag)? 
+    - Was habe ich am [Samstag](wochentag) ? 
+    - Was habe ich am [sonntag](wochentag)? 
 
 
 
