@@ -103,11 +103,12 @@ class ActionUserName(Action):
             tomorrow += 1 
             wochenendcount = tomorrow
             tomorrow = wochenliste[tomorrow]
-            tomorrow = fächerproTag[tomorrow]
+            
             if wochenendcount <= 4: 
+                tomorrow = fächerproTag[tomorrow]
                 dispatcher.utter_message(f'{tomorrow}')
             else: 
-                dispatcher.utter_message('Morgen ist kein Wochentag. ')
+                dispatcher.utter_message('Es ist Wochenende. Da hat man keine Vorlesung sondern Freizeit. Lass es dir auch mal etwas gut gehen  ')
 
         else: 
             if wochentag== 'samstag' or wochentag == 'sonntag' : 
