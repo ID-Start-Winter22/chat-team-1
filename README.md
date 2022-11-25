@@ -1,5 +1,6 @@
-# Chatbot Projektmodul Start - HOMIbot
+# Chatbot Projektmodul Start - OrgiBot
 
-Beschreiben Sie kurz Ihre Projektidee (mit Bild oder Storyboard)
+Für die Professoren: 
 
-Verweisen Sie für mehr Information auf die Wiki Seite
+Unser Sprint 0 Chatbot finden Sie im Branch: OrgiBotSprint0 
+Viel Spaß beim Testen :) 
