@@ -8,11 +8,12 @@ intents:
   - deny
   - mood_great
   - mood_unhappy
-  - bot_challenge
   - my_name_is
   - bot_challenge_name
   - ask_travel_time
   - welches_fach_habe_ich
+  - funktionsabfrage
+  - bot_challenge
   
 actions:
   - action_store_name

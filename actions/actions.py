@@ -29,7 +29,7 @@ class ActionStoreUserName(Action):
          
      def run(self, dispatcher, tracker, domain):
         username = tracker.get_slot("username")
-        print("Sender ID: ", tracker.sender_id)
+        dispatcher.utter_message("Sender ID: ", tracker.sender_id)
 
         return []
 
@@ -60,9 +60,9 @@ class ActionMVG(Action):
             dispatcher.utter_message("Diese Stationen habe ich nicht erkannt!")
         else:
             result = json.loads(mvg.handle_route(from_station, to_station))
-            print(result)
+            dispatcher.utter_message(result)
             if "error" in result:
-                print("FEHLER!!!!!!!!!!!!")
+                dispatcher.utter_message("FEHLER!!!!!!!!!!!!")
                 dispatcher.utter_message("Sorry! Ich habe da mindestens eine Station nicht erkannt!")
             else:
                 origin = result["from"]
@@ -78,16 +78,17 @@ class ActionUserName(Action):
          return "fächerauswahl_tag"
 
      def run(self, dispatcher, tracker, domain):
-        wochentag = (tracker.get_slot("wochentag")).lower()
 
-        fächerproTag = {'montag': ('Computatuional Thinking','8: 15- 9:45'), 'dienstag' : ('Computatuional Thinking', '10:00 - 11:30'), 'mittwoch': ('Grundlagen interface und Interactionsdesign', '16:30 - 18:00'), 'donnerstag': ('Grundlagen Gestaltung und Typographie', '13:00 - 16:15'), 'freitag': ('Projektmodul Start', '10:30 - 13:30')} 
+
+        wochentag= tracker.get_slot("wochentag")
+        fächerproTag = {'montag': ('Computatuional Thinking','8: 15- 9:45'), 'dienstag' : ('Computatuional Thinking', '10:00 - 11:30'), 'mittwoch': ('Grundlagen interface und Interactionsdesign', '16:30 - 18:00'), 'donnerstag': ('Grundlagen Gestaltung und Typographie', '13:00 - 16:15'), 'freitag': ('Projektmodul Start', '10:30 - 13:30'), 'samstag': 'Es ist Wochenende. Da hat man keine Vorlesung sondern Freizeit. Lass es dir auch mal etwas gut gehen ', 'sonntag': ' Es ist Wochenende. Da hat man keine Vorlesung sondern Freizeit. Lass es dir auch mal etwas gut gehen'} 
         wochenliste = ['montag', 'dienstag', 'mittwoch', 'donnerstag', 'freitag','samstag', 'sonntag']
 
         today = datetime.today().weekday()
-        
+
         today= wochenliste[today]
         today= fächerproTag[today]
-        
+
 
         if not wochentag: 
             dispatcher.utter_message('Das habe ich entweder nicht verstanden oder du hast was vercheckt und du frägst mich gerade ernsthaft ob du am Wochenende eine Vorlesung hast :)')
@@ -97,10 +98,11 @@ class ActionUserName(Action):
 
         elif wochentag == 'heute' : 
             dispatcher.utter_message(f'{today}')
-       
+
         elif wochentag == 'morgen': 
             tomorrow = datetime.today().weekday()
             tomorrow += 1 
+            tomorrow %= len(wochenliste)
             wochenendcount = tomorrow
             tomorrow = wochenliste[tomorrow]
             
@@ -114,6 +116,7 @@ class ActionUserName(Action):
             if wochentag== 'samstag' or wochentag == 'sonntag' : 
                 dispatcher.utter_message('Es ist wochenende. Da hat man keine Vorlesung sondern Freizeit. Lass es dir auch mal etwas gut gehen ')
             else: dispatcher.utter_message('Das hab ich jetzt nicht verstanden. Frag doch bitte nochmal genuaer wenn es um deinen Stundenplan ging.')
+
 
         return []
 
