@@ -58,3 +58,10 @@ stories:
   steps: 
     - intent: welches_fach_habe_ich
     - action: fächerauswahl_tag
+
+- story: frage_nach_funktionen
+  steps: 
+    - intent: bot_challenge
+    - action: utter_iamabot
+    - intent: funktionsabfrage
+    - action: frage_nach_funktionen

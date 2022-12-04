@@ -115,17 +115,16 @@ class ActionUserName(Action):
                 dispatcher.utter_message('Es ist wochenende. Da hat man keine Vorlesung sondern Freizeit. Lass es dir auch mal etwas gut gehen ')
             else: dispatcher.utter_message('Das hab ich jetzt nicht verstanden. Frag doch bitte nochmal genuaer wenn es um deinen Stundenplan ging.')
 
-
-            
-
-            
-             
-
-
-        # else: 
-        #     dispatcher.utter_message('Tut mir leid das habe ich nicht verstanden. Und falls du nach dem Wochenende gefragt hast, keine Ansgt da hast du keine Vorlesung!')
-
-        
-
-
         return []
+
+class ActionUserName(Action):
+
+    def name(self):
+        return "frage_nach_funktionen"
+
+    def run(self, dispatcher, tracker, domain):
+        antwort= ("Ich helfe dir bei der Organisation deines Unialltags und kann dir beispielsweise bei folgenden Fragen weiterhelfen: \n - Was habe ich heute für Fächer? \n - Wann beginnt die Vorlesung? \n - Wo findet die Voresung statt? \n - Was steht heute alles an?\n Und noch einiges mehr. Probiers doch einfach mal aus :). ")
+
+        dispatcher.utter_message(antwort)
+
+        return[]

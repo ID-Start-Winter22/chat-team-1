@@ -19,6 +19,7 @@ actions:
   - action_get_name
   - action_get_travel_time
   - fächerauswahl_tag
+  - frage_nach_funktionen
 
 entities:
   - username
@@ -73,13 +74,16 @@ responses:
   - text: "Bye"
 
   utter_iamabot:
-  - text: "Ich bin ein Chatbot, powered by Rasa."
+  - text: "Ich bin dein bester Kumpel wenns drum geht deinen Uni-Alltag zu organsisieren. Probiers doch einfach aus, oder Frag mich was ich alles kann ;). "
+  - text: "Ich bin deine letzte Hoffnung mit dem ganzen Organisationskram fertig zu werden!  Probiers doch einfach aus, oder Frag mich was ich alles kann ;)."
+  - text: "Ich helfe dir bei den wichtigsten Fragen rund um deinen Uni Alltag.  Probiers doch einfach aus oder, Frag mich was ich alles kann ;)."
 
   utter_greet_ask_name:
   - text: "Hallo, wie heißt Du?"
 
   utter_greet_with_name:
   - text: "Hey, {username}. Alles klar?"
+
 
 session_config:
   session_expiration_time: 60

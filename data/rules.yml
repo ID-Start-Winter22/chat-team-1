@@ -11,8 +11,13 @@ rules:
   - intent: bot_challenge
   - action: utter_iamabot
 
-- rule: Antworte mir auf die Frage welceh Fäcehr ich habe an welchem Tag 
+- rule: Antworte mir auf die Frage welche Fächer ich habe an welchem Tag 
   steps: 
   - intent: welches_fach_habe_ich
   - action: fächerauswahl_tag 
+
+- rule : Antwort mir auf die Frage was kannst du alles ? 
+  steps: 
+  - intent: funktionsabfrage
+  - action: frage_nach_funktionen
 

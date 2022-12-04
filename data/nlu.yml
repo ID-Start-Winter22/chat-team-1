@@ -20,6 +20,7 @@ nlu:
     - Servus
     - Hallo
     - hallo
+    - was geht? 
 
 - intent: greet_formal
   examples: |
@@ -151,5 +152,16 @@ nlu:
     - Was habe ich am [Samstag](wochentag) ? 
     - Was habe ich am [sonntag](wochentag)? 
 
+- intent: funktionsabfrage
+  examples: |
+    - Was kannst du alles? 
+    - was sind deine Funktionen? 
+    - ich brauche deine Hilfe
+    - ich brauche hilfe
+    - wie kannst du mir helfen? 
+    - was soll ich mit dir? 
+    - wieso brauch ich dich? 
+    - für was brauche ich dich? 
+    - was bringst du ? 
 
 
