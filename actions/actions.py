@@ -129,5 +129,6 @@ class ActionUserName(Action):
         antwort= ("Ich helfe dir bei der Organisation deines Unialltags und kann dir beispielsweise bei folgenden Fragen weiterhelfen: \n - Was habe ich heute für Fächer? \n - Wann beginnt die Vorlesung? \n - Wo findet die Voresung statt? \n - Was steht heute alles an?\n Und noch einiges mehr. Probiers doch einfach mal aus :). ")
 
         dispatcher.utter_message(antwort)
+        #Kommentar 
 
         return[]
