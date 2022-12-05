@@ -163,5 +163,16 @@ nlu:
     - wieso brauch ich dich? 
     - für was brauche ich dich? 
     - was bringst du ? 
+  
+- intent: hat_Ofen_heute_auf
+  examples: |
+    - Hat der Ofen heute auf?
+    - Ist heute Ofen?
+    - heute alter Ofen?
+    - ist heute Bergfest?
+    - Alter Ofen?
+    - Bergfest?
+    - Stammtisch oida!
+    - Stammtisch?
 
 

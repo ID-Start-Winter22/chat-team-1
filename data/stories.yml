@@ -65,3 +65,8 @@ stories:
     - action: utter_iamabot
     - intent: funktionsabfrage
     - action: frage_nach_funktionen
+  
+- story: hat_Ofen_heute_auf
+  steps: 
+    - intent: hat_Ofen_heute_auf
+    - action: utter_ask_for_ofen

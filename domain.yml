@@ -14,6 +14,7 @@ intents:
   - welches_fach_habe_ich
   - funktionsabfrage
   - bot_challenge
+  - hat_Ofen_heute_auf
   
 actions:
   - action_store_name
@@ -84,6 +85,11 @@ responses:
 
   utter_greet_with_name:
   - text: "Hey, {username}. Alles klar?"
+
+  utter_ask_for_ofen:
+  - text: "Schön, dass du frägst ob der Ofen heute auf hat. Ich kann dir das leider nicht sagen. Frag doch mal deinen Mitbewohner. "
+  - text: "Ich schau mal nach, oida!......      ja safe, der Ofen ist heute auf. "
+  
 
 
 session_config:
