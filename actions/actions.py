@@ -130,6 +130,11 @@ class ActionUserName(Action):
 
         dispatcher.utter_message(antwort)
         #Kommentar 
+<<<<<<< HEAD
         #sadf
+=======
+        #Kommentar2skasjdhf
+        #Kommentaraksjdhfkjashdbfk
+>>>>>>> ca3ee20f288558893286d8d3b711fd165a39a3ef
 
         return[]
