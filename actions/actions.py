@@ -126,7 +126,7 @@ class ActionUserName(Action):
         return "frage_nach_funktionen"
 
     def run(self, dispatcher, tracker, domain):
-        antwort= ("Ich helfe dir bei der Organisation deines Unialltags und kann dir beispielsweise bei folgenden Fragen weiterhelfen: \n - Was habe ich heute für Fächer? \n - Wann beginnt die Vorlesung? \n - Wo findet die Voresung statt? \n - Was steht heute alles an?\n Und noch einiges mehr. Probiers doch einfach mal aus :). ")
+        antwort= ("Ich heiße Archimedes, aber meine Freunde nennen mich Archie. Ich helfe dir bei der Organisation deines Unialltags und kann dir beispielsweise bei folgenden Fragen weiterhelfen: \n - Was habe ich heute für Fächer? \n - Wann beginnt die Vorlesung? \n - Wo findet die Voresung statt? \n - Was steht heute alles an?\n Und noch einiges mehr. Probiers doch einfach mal aus :). ")
 
         dispatcher.utter_message(antwort)
         #Kommentar 
