@@ -7,10 +7,10 @@ Beispiele hierfuer koennten sein: Die Raumsuche, die Auskunft ueber welche Vorle
 Wie wir:
 Name | Email 
 -------- | -------- 
-Konradin Schrader   | @hm.edu   
-Gianni Carozza   | @hm.edu    
-Martin Lagleder   | @hm.edu  
-Elias Eggenberger   | @hm.edu  
+Konradin Schrader   | k.schrader@hm.edu   
+Gianni Carozza   | carozza@hm.edu    
+Martin Lagleder   | m.lagleder@hm.edu  
+Elias Eggenberger   | elias.eggenberger@hm.edu  
 
 uns das ganze im Detail vorstellen und wie wir hierbei vorgegangen sind koennen Sie auf den weiteren Seiten unseres Repositorys erforschen.
 
