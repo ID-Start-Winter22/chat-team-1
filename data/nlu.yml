@@ -26,6 +26,7 @@ nlu:
   examples: |
     - guten Tag
     - guten Abend
+    - guten Morgen 
 
 
 - intent: goodbye
@@ -34,6 +35,7 @@ nlu:
     - good by
     - cee you later
     - good night
+    - Bye
     - bye
     - goodbye
     - have a nice day
@@ -41,15 +43,20 @@ nlu:
     - bye bye
     - see you later
     - Tschüss
+    - Ciao
+    - ciao
 
 - intent: affirm
   examples: |
     - yes
     - y
+    - safe
     - indeed
     - of course
     - that sounds good
     - correct
+    - schon
+    - j
     - ja
     - jap
     - yep
@@ -65,6 +72,7 @@ nlu:
     - don't like that
     - no way
     - not really
+    - nicht wirklich
     - nein
     - ne
 
@@ -86,6 +94,8 @@ nlu:
     - so perfect
     - super
     - gut
+    - perfekt
+    - mega
 
 - intent: mood_unhappy
   examples: |
@@ -104,6 +114,8 @@ nlu:
     - so saad
     - so sad
     - schlecht
+    - nicht gut
+    - traurig
 
 - intent: bot_challenge
   examples: |
@@ -114,21 +126,44 @@ nlu:
     - wer bist du?
     - bist du ein Mensch?
     - spreche ich mit einem Chatbot?
+    - bist du ein bot?
+    - bist du real?
 
 - intent: my_name_is
   examples: |
     - Ich heiße [Gudrun](username)
+    - Ich heiße [Elias](username)
+    - Ich heiße [Gianni](username)
+    - Ich heiße [Konni](username)
+    - Ich heiße [Martin](username)
     - Ich bin [Tina](username)
-    - [Thomas](username)
+    - Ich bin [Elias](username)
+    - Ich bin [Gianni](username)
+    - Ich bin [Konni](username)
+    - Ich bin [Martin](username)
     - Mein Name ist [Anna](username)
+    - Mein Name ist [Elias](username)
+    - Mein Name ist [Gianni](username)
+    - Mein Name ist [Konni](username)
+    - Mein Name ist [Martin](username)
     - Ich bin der [Horst](username)
-    - [Hans](username)
+    - Ich bin der [Elias](username)
+    - Ich bin der [Gianni](username)
+    - Ich bin der [Konni](username)
+    - Ich bin der [Martin](username)
+    - [Elias](username)
+    - [Gianni](username)
+    - [Konni](username)
+    - [Martin](username)
+
 
 - intent: bot_challenge_name
   examples: |
     - Wer bin ich?
     - Wie heisse ich?
+    - Kennst du mich noch?
     - Erinnerst du dich an meinen Namen?
+    - Weißt du noch wer ich bin?
 
 - intent: ask_travel_time
   examples: |
@@ -163,6 +198,11 @@ nlu:
     - wieso brauch ich dich? 
     - für was brauche ich dich? 
     - was bringst du ? 
+    - was kannst du?
+    - Hilfe
+    - hilfe
+    - h
+
   
 - intent: hat_Ofen_heute_auf
   examples: |

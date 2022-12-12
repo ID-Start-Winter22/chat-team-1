@@ -68,12 +68,16 @@ responses:
 
   utter_did_that_help:
   - text: "Hilft das?"
+  - text: "Hat dir das geholfen?"
 
   utter_happy:
   - text: "Toll weiter so."
+  - text: "Das freut mich sehr."
+  - text: "Das höre ich gerne."
 
   utter_goodbye:
   - text: "Bye"
+  - text: "Tschüüss"
 
   utter_iamabot:
   - text: "Ich bin dein bester Kumpel wenns drum geht deinen Uni-Alltag zu organsisieren. Probiers doch einfach aus, oder Frag mich was ich alles kann ;). "
