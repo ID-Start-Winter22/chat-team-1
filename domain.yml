@@ -81,8 +81,8 @@ responses:
 
   utter_iamabot:
   - text: "Ich heiße Archimedes, aber meine Freunde nennen mich Archie! Ich helfe dir, wenns drum geht deinen Uni-Alltag zu organsisieren. Probiers doch einfach aus, oder Frag mich was ich alles kann ;). "
-  - text: "Ich bin deine letzte Hoffnung mit dem ganzen Organisationskram fertig zu werden!  Probiers doch einfach aus, oder Frag mich was ich alles kann ;)."
-  - text: "Ich helfe dir bei den wichtigsten Fragen rund um deinen Uni Alltag.  Probiers doch einfach aus oder, Frag mich was ich alles kann ;)."
+  - text: "Ich heiße Archimedes und bin deine letzte Hoffnung mit dem ganzen Organisationskram fertig zu werden!  Probiers doch einfach aus, oder Frag mich was ich alles kann ;)."
+  - text: "Ich heiße Archimedes helfe dir bei den wichtigsten Fragen rund um deinen Uni Alltag.  Probiers doch einfach aus oder, Frag mich was ich alles kann ;)."
 
   utter_greet_ask_name:
   - text: "Hallo, wie heißt Du?"

@@ -111,6 +111,7 @@ class ActionUserName(Action):
                 dispatcher.utter_message(f'{tomorrow}')
             else: 
                 dispatcher.utter_message('Es ist Wochenende. Da hat man keine Vorlesung sondern Freizeit. Lass es dir auch mal etwas gut gehen  ')
+            del wochentag 
 
         else: 
             if wochentag== 'samstag' or wochentag == 'sonntag' : 
@@ -118,7 +119,7 @@ class ActionUserName(Action):
             else: dispatcher.utter_message('Das hab ich jetzt nicht verstanden. Frag doch bitte nochmal genuaer wenn es um deinen Stundenplan ging.')
 
 
-        return []
+        return{"wochentag": None}
 
 class ActionUserName(Action):
 
@@ -129,9 +130,5 @@ class ActionUserName(Action):
         antwort= ("Ich heiße Archimedes, aber meine Freunde nennen mich Archie. Ich helfe dir bei der Organisation deines Unialltags und kann dir beispielsweise bei folgenden Fragen weiterhelfen: \n - Was habe ich heute für Fächer? \n - Wann beginnt die Vorlesung? \n - Wo findet die Voresung statt? \n - Was steht heute alles an?\n Und noch einiges mehr. Probiers doch einfach mal aus :). ")
 
         dispatcher.utter_message(antwort)
-        #Kommentar 
-        #sadf
-        #Kommentar2skasjdhf
-        #Kommentaraksjdhfkjashdbfk
 
         return[]
