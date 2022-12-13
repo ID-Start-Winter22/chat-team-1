@@ -15,7 +15,11 @@ intents:
   - funktionsabfrage
   - bot_challenge
   - hat_Ofen_heute_auf
+<<<<<<< HEAD
   - ask_for_Lageplan
+=======
+  - Welches_Fach_Konkret
+>>>>>>> 89689bc8d8a3713d5b99b43c5149873bcfea165a
   
 actions:
   - action_store_name
@@ -23,12 +27,15 @@ actions:
   - action_get_travel_time
   - fächerauswahl_tag
   - frage_nach_funktionen
+  - Wann_Wo
 
 entities:
   - username
   - from_station
   - to_station
   - wochentag 
+  - Anfrage
+  - Fach
 
 slots:
   username:
@@ -55,6 +62,21 @@ slots:
     mappings:
     - type: from_entity
       entity: wochentag
+  Fach:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: Fach
+  Anfrage:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: Anfrage
+
+
+  
   
 
 responses:
@@ -103,8 +125,8 @@ responses:
 
   utter_iamabot:
   - text: "Ich heiße Archimedes, aber meine Freunde nennen mich Archie! Ich helfe dir, wenns drum geht deinen Uni-Alltag zu organsisieren. Probiers doch einfach aus, oder Frag mich was ich alles kann ;). "
-  - text: "Ich bin deine letzte Hoffnung mit dem ganzen Organisationskram fertig zu werden!  Probiers doch einfach aus, oder Frag mich was ich alles kann ;)."
-  - text: "Ich helfe dir bei den wichtigsten Fragen rund um deinen Uni Alltag.  Probiers doch einfach aus oder, Frag mich was ich alles kann ;)."
+  - text: "Ich heiße Archimedes und bin deine letzte Hoffnung mit dem ganzen Organisationskram fertig zu werden!  Probiers doch einfach aus, oder Frag mich was ich alles kann ;)."
+  - text: "Ich heiße Archimedes helfe dir bei den wichtigsten Fragen rund um deinen Uni Alltag.  Probiers doch einfach aus oder, Frag mich was ich alles kann ;)."
 
   utter_greet_ask_name:
   - text: "Hallo, wie heißt Du?"
