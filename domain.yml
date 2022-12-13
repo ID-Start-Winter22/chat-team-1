@@ -15,12 +15,10 @@ intents:
   - funktionsabfrage
   - bot_challenge
   - hat_Ofen_heute_auf
-<<<<<<< HEAD
   - ask_for_Lageplan
-=======
   - Welches_Fach_Konkret
->>>>>>> 89689bc8d8a3713d5b99b43c5149873bcfea165a
-  
+  - fauler_Student
+
 actions:
   - action_store_name
   - action_get_name
@@ -152,14 +150,14 @@ responses:
   - text: "Ist doch alles halb so wild!"
   - text: "Mach doch vielleicht mal ein bisschen Sport, dann wird das schon wieder!"
   - text: "Kopf hoch, so Tage gibt es halt. Morgen sieht die Welt wieder anders aus!"
-  - text: "Villeicht hilft dir das hier ein bisschen:"
-    image: "https://giphy.com/clips/originals-reaction-dog-motivational-ItsDcVrtzYeBbiERKb"
+  - text: "Vielleicht hilft dir das hier ein bisschen:"
+
   - text: "Wie Dori schon einst sagte:"
-    image: "https://giphy.com/gifs/life-finding-nemo-dory-GoT50QNVUdoyI"
+    image: "https://cdn.discordapp.com/attachments/1040271483001389067/1052268593380851752/giphy_2.gif"
   - text: "Alles wird gut!"
-    image: "https://giphy.com/gifs/AnimationOnFOX-the-simpsons-season-31-ep-17-highway-to-well-LORLshzf2pf2beqJS9"
+    image: "https://cdn.discordapp.com/attachments/1040271483001389067/1052268593812877332/giphy.gif"
   - text: "Hey, stop saying that!"
-    image: "https://giphy.com/gifs/ghost-believe-in-yourself-positively-ghostly-bzuUs1uRLBHWe2aBPK"
+    image: "https://cdn.discordapp.com/attachments/1040271483001389067/1052268534106968134/giphy_1.gif"
 
 
 session_config:
