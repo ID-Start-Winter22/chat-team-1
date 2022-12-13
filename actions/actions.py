@@ -186,7 +186,7 @@ class ActionUserName(Action):
                     dispatcher.utter_message(f'{today[1]}') 
                 if frage == 'wo': 
                     dispatcher.utter_message(f'{today[2]}')
-                    #Lageplan
+                    #Lageplan einfügen 
             if not fach or not fächerproTag[wochentag[0]]: 
                 dispatcher.utter_message('Ich glaube du hast das Fach heute gar nicht. Aber du hast heute: ')
 
