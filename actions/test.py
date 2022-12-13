@@ -1,5 +1,2 @@
-a = 'Hallo'
-b =''
-
-for i in a[::-1]:
-    print(i)
+fächerproTag = {'montag': ('Computatuional Thinking','8: 15- 9:45', 'R0.058'), 'dienstag' : ('Computatuional Thinking', '10:00 - 11:30', 'E0.103'), 'mittwoch': ('Grundlagen Interface und Interactionsdesign', '16:30 - 18:00', 'X1.018'), 'donnerstag': ('Grundlagen Gestaltung und Typographie', '13:00 - 16:15', 'X1.018'), 'freitag': ('Projektmodul Start', '10:30 - 13:30', 'Pavillion X - Gebäude'), 'samstag': 'Es ist Wochenende. Da hat man keine Vorlesung sondern Freizeit. Lass es dir auch mal etwas gut gehen ', 'sonntag': ' Es ist Wochenende. Da hat man keine Vorlesung sondern Freizeit. Lass es dir auch mal etwas gut gehen'} 
+print(fächerproTag['montag'][0]) 

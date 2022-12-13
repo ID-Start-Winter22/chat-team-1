@@ -15,6 +15,7 @@ intents:
   - funktionsabfrage
   - bot_challenge
   - hat_Ofen_heute_auf
+  - Welches_Fach_Konkret
   
 actions:
   - action_store_name
@@ -22,12 +23,15 @@ actions:
   - action_get_travel_time
   - fächerauswahl_tag
   - frage_nach_funktionen
+  - Wann_Wo
 
 entities:
   - username
   - from_station
   - to_station
   - wochentag 
+  - Anfrage
+  - Fach
 
 slots:
   username:
@@ -54,6 +58,21 @@ slots:
     mappings:
     - type: from_entity
       entity: wochentag
+  Fach:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: Fach
+  Anfrage:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: Anfrage
+
+
+  
   
 
 responses:
