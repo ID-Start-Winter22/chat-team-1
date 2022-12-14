@@ -75,3 +75,25 @@ stories:
   steps: 
     - intent: hat_Ofen_heute_auf
     - action: utter_ask_for_ofen
+
+- story: uni_Lageplan
+  steps: 
+    - intent: ask_for_Lageplan
+    - action: utter_ask_for_Lageplan
+
+- story: fauler_sack
+  steps: 
+    - intent: fauler_Student
+    - action: utter_fauler_Student
+    - action: utter_did_that_help
+    - intent: affirm
+    - action: utter_happy
+
+# - story: fauler_sack2
+#   steps: 
+#     - intent: fauler_Student
+#     - action: utter_fauler_Student
+#     - action: utter_did_that_help
+#     - intent: deny
+#     - action: utter_fauler_Student
+#     - action: utter_did_that_help

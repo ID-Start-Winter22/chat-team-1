@@ -21,12 +21,15 @@ nlu:
     - Hallo
     - hallo
     - was geht? 
-
+    - Alles fit, Archie?
+    - Wie geht's, Archie?
+    - Was geht ab, Archie?
+    
 - intent: greet_formal
   examples: |
     - guten Tag
     - guten Abend
-    - guten Morgen 
+    - guten Morgen
 
 
 - intent: goodbye
@@ -266,6 +269,37 @@ nlu:
 
 
 
+- intent: ask_for_Lageplan
+  examples: |
+    - Wo ist das R-Gebäude?
+    - Wo ist das X-Gebäude?
+    - Wo ist das C-Gebäude?
+    - Wo ist das B-Gebäude?
+    - Wo ist das A-Gebäude?
+    - Wo ist das D-Gebäude?
+    - Wo ist die Bibliothek?
+    - Wo ist die Mensa?
+    - Wo ist das E-Geäude?
+    - Wo ist das H-Gebäude?
+    - Wo ist das I-Gebäude?
+    - Wo ist das T-Gebäude?
+    - Wo ist das S-Gebäude?
+    - Wo ist das W-Gebäude?
+    - Hast du einen Lageplan?
+    - Wo muss ich hin?
+    - Wo ist der Eingang?
+
+- intent: fauler_Student
+  examples: |
+    - Ich bin faul
+    - Ich bin faul und will nicht mehr lernen
+    - Ich will heute nicht lernen
+    - Ich will nicht in die Uni
+    - Ich habe keinen Bock auf Uni
+    - Ich bin müde
+    - Ich bin müde und will nicht mehr lernen
+    - Ich habe keine Lust auf Uni
+    - Uni ist Scheiße
 
 
 
