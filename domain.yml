@@ -18,6 +18,7 @@ intents:
   - ask_for_Lageplan
   - Welches_Fach_Konkret
   - fauler_Student
+  - zoom_link 
 
 actions:
   - action_store_name
@@ -26,7 +27,10 @@ actions:
   - fächerauswahl_tag
   - frage_nach_funktionen
   - Wann_Wo
+  - zoom_link_antwort
   - Organisations_Hauptfunktion
+  
+  
 
 entities:
   - username
@@ -146,12 +150,20 @@ responses:
   
   utter_fauler_Student:
   - text: "Sag doch sowas nicht, du Fauler Student!"
+    image: "https://cdn.discordapp.com/attachments/1040271483001389067/1052268593812877332/giphy.gif"
   - text: "Nimms nicht so schwer, bald ist wieder Ofen!"
+    image: "https://cdn.discordapp.com/attachments/1040271483001389067/1052268593812877332/giphy.gif"
+
   - text: "Du bist doch kein Fauler Student, oder?"
+    image: "https://cdn.discordapp.com/attachments/1040271483001389067/1052268593812877332/giphy.gif"
   - text: "Ist doch alles halb so wild!"
+    image: "https://cdn.discordapp.com/attachments/1040271483001389067/1052268593812877332/giphy.gif"
   - text: "Mach doch vielleicht mal ein bisschen Sport, dann wird das schon wieder!"
+    image: "https://cdn.discordapp.com/attachments/1040271483001389067/1052268593812877332/giphy.gif"
   - text: "Kopf hoch, so Tage gibt es halt. Morgen sieht die Welt wieder anders aus!"
+    image: "https://cdn.discordapp.com/attachments/1040271483001389067/1052268593812877332/giphy.gif"
   - text: "Vielleicht hilft dir das hier ein bisschen:"
+    image: "https://cdn.discordapp.com/attachments/1040271483001389067/1052268593812877332/giphy.gif"
 
   - text: "Wie Dori schon einst sagte:"
     image: "https://cdn.discordapp.com/attachments/1040271483001389067/1052268593380851752/giphy_2.gif"

@@ -94,8 +94,11 @@ class ActionUserName(Action):
         if not wochentag: 
             dispatcher.utter_message('Das habe ich entweder nicht verstanden oder du hast was vercheckt und du frägst mich gerade ernsthaft ob du am Wochenende eine Vorlesung hast :)')
 
-        elif wochentag in fächerproTag: 
+        elif wochentag in fächerproTag and wochentag != 'samstag' or wochentag == 'sonntag': 
             dispatcher.utter_message(f'Du hast am {wochentag} die Fächer {fächerproTag[wochentag][0]} um {fächerproTag[wochentag][1]}')
+        elif wochentag == 'samstag' or wochentag == 'sonntag': 
+            dispatcher.utter_message('Es ist Wochenende. Da hat man keine Vorlesung sondern Freizeit. Lass es dir auch mal etwas gut gehen  ')
+
 
         elif wochentag == 'heute' : 
             dispatcher.utter_message(f'Du hast heute das Fach {today[0]} um {today[1]} ')
@@ -117,7 +120,7 @@ class ActionUserName(Action):
         else: 
             if wochentag== 'samstag' or wochentag == 'sonntag' : 
                 dispatcher.utter_message('Es ist wochenende. Da hat man keine Vorlesung sondern Freizeit. Lass es dir auch mal etwas gut gehen ')
-            else: dispatcher.utter_message('Das hab ich jetzt nicht verstanden. Frag doch bitte nochmal genuaer wenn es um deinen Stundenplan ging.')
+            else: dispatcher.utter_message('Das hab ich jetzt nicht verstanden. Frag doch bitte nochmal genauer wenn es um deinen Stundenplan ging.')
 
 
         return[AllSlotsReset()]
@@ -142,7 +145,7 @@ class ActionUserName(Action):
      def run(self, dispatcher, tracker, domain):
 
         try: 
-            fächerproTag = {'montag': ('computational thinking ct','8: 15- 9:45', 'R0.058'), 'dienstag' : ('computational thinking ct', '10:00 - 11:30', 'E0.103'), 'mittwoch': ('grundlagen interface und interactionsdesign ui ux', '16:30 - 18:00', 'X1.018'), 'donnerstag': ('grundlagen gestaltung und typographie ggt', '13:00 - 16:15', 'X1.018'), 'freitag': ('projektmodul start pm', '10:30 - 13:30', 'Pavillion X - Gebäude'), 'samstag': 'Es ist Wochenende. Da hat man keine Vorlesung sondern Freizeit. Lass es dir auch mal etwas gut gehen ', 'sonntag': ' Es ist Wochenende. Da hat man keine Vorlesung sondern Freizeit. Lass es dir auch mal etwas gut gehen'} 
+            fächerproTag = {'montag': ('computational thinking ct','8: 15- 9:45', 'R0.058'), 'dienstag' : ('computational thinking ct', '10:00 - 11:30', 'E0.103'), 'mittwoch': ('grundlagen interface und interactionsdesign ui ux', '16:30 - 18:00', 'X1.018'), 'donnerstag': ('grundlagen gestaltung und typographie ggt', '13:00 - 16:15', 'X1.018'), 'freitag': ('projektmodul start pm', '10:30 - 13:30', 'Pavillion X - Gebäude')} 
             wochenliste = ['montag', 'dienstag', 'mittwoch', 'donnerstag', 'freitag','samstag', 'sonntag']
 
 
@@ -194,12 +197,36 @@ class ActionUserName(Action):
                     if frage =='wann':
                         dispatcher.utter_message(f'Das Fach {today[0]} um {today[1]} ')
                     if frage =='wo':
-                        dispatcher.utter_message(f'Das Fach {today[0]} im Raum {today[1]} ')
+                        dispatcher.utter_message(f'Das Fach {today[0]} im Raum {today[2]} ')
         except: 
             dispatcher.utter_message(f'Tut mir leid das verstehe ich noch nicht genau. um diese Funktion zu verwenden musst du mir genau den Tag und das Modul sagen. Und die Schlagwörter wo und wann verwenden. ')
 
 
         return[AllSlotsReset()]
+
+class ActionUserName(Action):
+
+     def name(self):
+        return "zoom_link_antwort"
+        
+
+     def run(self, dispatcher, tracker, domain):
+        fach = tracker.get_slot("Fach") 
+        if fach : fach = fach.lower()
+        try: 
+            
+
+            zoom_links = {'Computational Thinking CT':'https://bbb.cs.hm.edu/b/tho-ajk-ffr-bev' ,'Grundlagen Gestaltung und Typographie GGT':'https://hm-edu.zoom.us/my/karin.fischnaller?pwd=S252WnRzakNRSXZsS2VUT2tDeFhZdz09' , 'Grundlagen wissenschaftlichen arbeitens GWA':'https://hm-edu.zoom.us/j/5550698639?pwd=SlpQQ0hIbGoxMG54QllacUlDTWFOUT09'}
+            
+            for key in zoom_links:
+                if fach in key.lower() : 
+                    fach = key
+                    link = zoom_links[key] 
+                    break
+            dispatcher.utter_message(f'Der Zoom link für das Fach {fach} lautet : {link}')
+        except: dispatcher.utter_message('Für dieses Fach habe ich leider keinen Link gefunden')
+
+        return[]
 
 # class ActionUserName(Action):
 

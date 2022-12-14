@@ -89,6 +89,11 @@ stories:
     - intent: affirm
     - action: utter_happy
 
+- story : zoom_link_frage
+  steps: 
+    - intent : zoom_link
+    - action : zoom_link_antwort
+
 # - story: fauler_sack2
 #   steps: 
 #     - intent: fauler_Student
