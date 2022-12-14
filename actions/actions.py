@@ -81,8 +81,8 @@ class ActionUserName(Action):
 
 
         wochentag= tracker.get_slot("wochentag")
-        wochentag = wochentag.lower()
-        fächerproTag = {'montag': ('Computatuional Thinking','8: 15- 9:45'), 'dienstag' : ('Computatuional Thinking', '10:00 - 11:30'), 'mittwoch': ('Grundlagen Interface und Interactionsdesign', '16:30 - 18:00'), 'donnerstag': ('Grundlagen Gestaltung und Typographie', '13:00 - 16:15'), 'freitag': ('Projektmodul Start', '10:30 - 13:30'), 'samstag': 'Es ist Wochenende. Da hat man keine Vorlesung sondern Freizeit. Lass es dir auch mal etwas gut gehen ', 'sonntag': ' Es ist Wochenende. Da hat man keine Vorlesung sondern Freizeit. Lass es dir auch mal etwas gut gehen'} 
+        if wochentag : wochentag = wochentag.lower()
+        fächerproTag = {'montag': ('Computational Thinking','8: 15- 9:45'), 'dienstag' : ('Computational Thinking', '10:00 - 11:30'), 'mittwoch': ('Grundlagen Interface und Interactionsdesign', '16:30 - 18:00'), 'donnerstag': ('Grundlagen Gestaltung und Typographie', '13:00 - 16:15'), 'freitag': ('Projektmodul Start', '10:30 - 13:30'), 'samstag': 'Es ist Wochenende. Da hat man keine Vorlesung sondern Freizeit. Lass es dir auch mal etwas gut gehen ', 'sonntag': ' Es ist Wochenende. Da hat man keine Vorlesung sondern Freizeit. Lass es dir auch mal etwas gut gehen'} 
         wochenliste = ['montag', 'dienstag', 'mittwoch', 'donnerstag', 'freitag','samstag', 'sonntag']
 
         today = datetime.today().weekday()
@@ -95,10 +95,10 @@ class ActionUserName(Action):
             dispatcher.utter_message('Das habe ich entweder nicht verstanden oder du hast was vercheckt und du frägst mich gerade ernsthaft ob du am Wochenende eine Vorlesung hast :)')
 
         elif wochentag in fächerproTag: 
-            dispatcher.utter_message(f'{fächerproTag[wochentag]}')
+            dispatcher.utter_message(f'Du hast am {wochentag} die Fächer {fächerproTag[wochentag][0]} um {fächerproTag[wochentag][1]}')
 
         elif wochentag == 'heute' : 
-            dispatcher.utter_message(f'{today}')
+            dispatcher.utter_message(f'Du hast heute das Fach {today[0]} um {today[1]} ')
 
         elif wochentag == 'morgen': 
             tomorrow = datetime.today().weekday()
@@ -109,7 +109,7 @@ class ActionUserName(Action):
             
             if wochenendcount <= 4: 
                 tomorrow = fächerproTag[tomorrow]
-                dispatcher.utter_message(f'{tomorrow}')
+                dispatcher.utter_message(f'Du hast morgen das Fach {tomorrow[0]} um  {tomorrow[1]} ')
             else: 
                 dispatcher.utter_message('Es ist Wochenende. Da hat man keine Vorlesung sondern Freizeit. Lass es dir auch mal etwas gut gehen  ')
             del wochentag 
@@ -137,71 +137,121 @@ class ActionUserName(Action):
 class ActionUserName(Action):
 
      def name(self):
-         return "Wann_Wo"
+        return "Wann_Wo"
 
      def run(self, dispatcher, tracker, domain):
-        fächerproTag = {'montag': ('Computational Thinking','8: 15- 9:45', 'R0.058'), 'dienstag' : ('Computational Thinking', '10:00 - 11:30', 'E0.103'), 'mittwoch': ('Grundlagen Interface und Interactionsdesign', '16:30 - 18:00', 'X1.018'), 'donnerstag': ('Grundlagen Gestaltung und Typographie', '13:00 - 16:15', 'X1.018'), 'freitag': ('Projektmodul Start', '10:30 - 13:30', 'Pavillion X - Gebäude'), 'samstag': 'Es ist Wochenende. Da hat man keine Vorlesung sondern Freizeit. Lass es dir auch mal etwas gut gehen ', 'sonntag': ' Es ist Wochenende. Da hat man keine Vorlesung sondern Freizeit. Lass es dir auch mal etwas gut gehen'} 
-        wochenliste = ['montag', 'dienstag', 'mittwoch', 'donnerstag', 'freitag','samstag', 'sonntag']
+
+        try: 
+            fächerproTag = {'montag': ('computational thinking ct','8: 15- 9:45', 'R0.058'), 'dienstag' : ('computational thinking ct', '10:00 - 11:30', 'E0.103'), 'mittwoch': ('grundlagen interface und interactionsdesign ui ux', '16:30 - 18:00', 'X1.018'), 'donnerstag': ('grundlagen gestaltung und typographie ggt', '13:00 - 16:15', 'X1.018'), 'freitag': ('projektmodul start pm', '10:30 - 13:30', 'Pavillion X - Gebäude'), 'samstag': 'Es ist Wochenende. Da hat man keine Vorlesung sondern Freizeit. Lass es dir auch mal etwas gut gehen ', 'sonntag': ' Es ist Wochenende. Da hat man keine Vorlesung sondern Freizeit. Lass es dir auch mal etwas gut gehen'} 
+            wochenliste = ['montag', 'dienstag', 'mittwoch', 'donnerstag', 'freitag','samstag', 'sonntag']
 
 
-        today = datetime.today().weekday()
-        today= wochenliste[today]
-        today= fächerproTag[today]
+            today = datetime.today().weekday()
+            today= wochenliste[today]
+            today= fächerproTag[today]
 
-        frage = tracker.get_slot("Anfrage")
-        fach = tracker.get_slot("Fach") 
-        wochentag = tracker.get_slot("wochentag")
-        wochentag = wochentag.lower() 
+            frage = tracker.get_slot("Anfrage")
+            if frage : frage=frage.lower()
+            fach = tracker.get_slot("Fach") 
+            if fach : fach = fach.lower()
+            wochentag = tracker.get_slot("wochentag")
+            if wochentag : wochentag = wochentag.lower() 
+
+            
+            if wochentag: 
+                if fach and fach in fächerproTag[wochentag][0]: 
+
+                    if frage == 'wann': 
+                        dispatcher.utter_message(f'Du hast das Fach {fächerproTag[wochentag][0]} am {wochentag}  um {fächerproTag[wochentag][1]} ') 
+
+                    if frage == 'wo': 
+                        dispatcher.utter_message(f'Du hast das Fach {fächerproTag[wochentag][0]} am {wochentag}  im {fächerproTag[wochentag][2]} ')
+                        #Lageplan
 
 
-        if frage: dispatcher.utter_message(f'{frage}')
-        if wochentag: dispatcher.utter_message(f'{wochentag}')
-        if fach: dispatcher.utter_message(f'{fach}')
+                if not fach or fach not in fächerproTag[wochentag][0]: 
+                    dispatcher.utter_message(f'UHUUUUU! Ich glaube du hast das Fach am {wochentag} gar nicht. Aber du hast an diesem Tag: ')
 
+                    if frage =='wann':
+                        dispatcher.utter_message(f'Das Fach {fächerproTag[wochentag][0]} um {fächerproTag[wochentag][1]} ')
+                    if frage =='wo':
+                        dispatcher.utter_message(f'Das Fach {fächerproTag[wochentag][0]} im Raum {fächerproTag[wochentag][2]} ')
+
+            if not wochentag or wochentag == 'heute': 
+                wochentag= 'heute'
+
+                if fach and fach in today[0]: 
+
+                    if frage == 'wann': 
+                        dispatcher.utter_message(f'Du hast heute das Fach {today[0]} um {today[1]}') 
+                    if frage == 'wo': 
+                        dispatcher.utter_message(f'Du hast heute das Fach {today[0]} im Raum: {today[2]}')
+                        #Lageplan einfügen 
+
+                if not fach or fach not in today[0]: 
+                    dispatcher.utter_message('Ich glaube du hast das Fach heute gar nicht. Aber du hast heute: ')
+
+                    if frage =='wann':
+                        dispatcher.utter_message(f'Das Fach {today[0]} um {today[1]} ')
+                    if frage =='wo':
+                        dispatcher.utter_message(f'Das Fach {today[0]} im Raum {today[1]} ')
+        except: 
+            dispatcher.utter_message(f'Tut mir leid das verstehe ich noch nicht genau. um diese Funktion zu verwenden musst du mir genau den Tag und das Modul sagen. Und die Schlagwörter wo und wann verwenden. ')
+
+
+        return[AllSlotsReset()]
+
+# class ActionUserName(Action):
+
+#      def name(self):
+#          return "Organisations_Hauptfunktion"
+
+#      def run(self, dispatcher, tracker, domain):
+#         #slots holen und strings anpassen 
+#         frage = tracker.get_slot("Anfrage")
+#         if frage : frage=frage.lower()
+#         fach = tracker.get_slot("Fach") 
+#         if fach : fach = fach.lower()
+#         wochentag = tracker.get_slot("wochentag")
+#         if wochentag : wochentag = wochentag.lower() 
+
+#         #dictionaries mit informationen holen 
+#         fächerproTag = {'montag': ('Computational Thinking CT','8: 15- 9:45', 'R0.058'), 'dienstag' : ('computational thinking ct', '10:00 - 11:30', 'E0.103'), 'mittwoch': ('grundlagen interface und interactionsdesign ui ux', '16:30 - 18:00', 'X1.018'), 'donnerstag': ('grundlagen gestaltung und typographie ggt', '13:00 - 16:15', 'X1.018'), 'freitag': ('projektmodul start pm', '10:30 - 13:30', 'Pavillion X - Gebäude'), 'samstag': 'Es ist Wochenende. Da hat man keine Vorlesung sondern Freizeit. Lass es dir auch mal etwas gut gehen ', 'sonntag': ' Es ist Wochenende. Da hat man keine Vorlesung sondern Freizeit. Lass es dir auch mal etwas gut gehen'} 
+#         wochenliste = ['montag', 'dienstag', 'mittwoch', 'donnerstag', 'freitag','samstag', 'sonntag']
+#         today = datetime.today().weekday()
+#         today= wochenliste[today]
         
-        if wochentag: 
-            if fach and fach in fächerproTag[wochentag][0]: 
+#         #fehler wenn frage nach wochenende
+#         if wochentag =='samstag' or wochentag== "sonntag" or today == 'samstag' or today == 'sonntag': 
+#             dispatcher.utter_message(fächerproTag('samstag'))
 
-                if frage == 'wann': 
-                    dispatcher.utter_message(f'{fächerproTag[wochentag][1]}') 
-                if frage == 'wo': 
-                    dispatcher.utter_message(f'{fächerproTag[wochentag][2]}')
-                    #Lageplan
+#         # dictionary öffenen mit tag 
+#         elif wochentag and wochentag in fächerproTag: 
+#             value_tag = fächerproTag[wochentag] #dict. ist jetzt offen inhalt in value_tag gespeichert 
+            
+#             # suche nach Fach welches ich auslesen möchte 
+#             fach = fach.split()
+#             if fach: 
+#                 for i in fach: 
+#                     if i in value_tag[0].lower(): 
+#                         fach_ausgabe = value_tag[0] 
+#                         break 
+#                     if i not in fach: 
+#                         fach_ausgabe = 'UHUU da hab ich das Fach leider nicht gefunden . Könntest du deine frage noch einmal stellen?'
 
-
-            if not fach or fach not in fächerproTag[wochentag][0]: 
-                dispatcher.utter_message('Ich glaube du hast das Fach heute gar nicht. Aber du hast heute: ')
-
-                if frage =='wann':
-                    dispatcher.utter_message(f'Das Fach {today[0]} um {today[1]} ')
-                if frage =='wo':
-                    dispatcher.utter_message(f'Das Fach {today[0]} im Raum {fächerproTag[wochentag][2]} ')
-
-        if not wochentag or wochentag == 'heute': 
-            wochentag= 'heute'
-
-            if fach and fach in today[0]: 
-
-                if frage == 'wann': 
-                    dispatcher.utter_message(f'{today[1]}') 
-                if frage == 'wo': 
-                    dispatcher.utter_message(f'{today[2]}')
-                    #Lageplan einfügen 
-            if not fach or not fächerproTag[wochentag[0]]: 
-                dispatcher.utter_message('Ich glaube du hast das Fach heute gar nicht. Aber du hast heute: ')
-
-                if frage =='wann':
-                    dispatcher.utter_message(f'Das Fach {today[0]} um {today[1]} ')
-                if frage =='wo':
-                    dispatcher.utter_message(f'Das Fach {today[0]} im Raum {today[1]} ')
-
-
-
+#             if fach_ausgabe != 'UHUU da hab ich das Fach leider nicht gefunden. Könntest du deine frage noch einmal stellen?':
+#                 if frage == 'was':
+#                     dispatcher.utter_message(f'Du hast am {wochentag} die Fächer: {value_tag[0]} ')
+#                 elif frage =="wo": 
+#                     dispatcher.utter_message(f'Du hast das {fach_ausgabe} im Raum: {value_tag[2]}')
+#                 elif frage == "wann": 
+#                     dispatcher.utter_message(f'Du hast das {fach_ausgabe} um {value_tag[1]}')
+#                 else: 
+#                     dispatcher.utter_message(f"mhhh ich weiß leider nicht was du genau von mir wolltest... kannst du dene Frage bitte noch einmal wiederholen?")
 
 
                     
+#             # fehler wenn kein fach oder falsches fach 
+#             else : dispatcher.utter_message('UHUU da hab ich das Fach leider nicht gefunden. Könntest du deine frage noch einmal stellen? Vielleicht hast ud das Fach an einem anderen Tag')
 
-        
-
-            
-        return[AllSlotsReset()]
+#         return[AllSlotsReset()]

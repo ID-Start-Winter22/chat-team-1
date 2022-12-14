@@ -191,13 +191,13 @@ nlu:
 
 - intent: Welches_Fach_Konkret
   examples: |
-    - [wann](Anfrage) habe ich [Grundlagen Gestaltung und Typographie](Fach) [morgen](wochentag)
-    - [wann](Anfrage) habe ich [Montag](wochentag) [Computational Thinking](Fach)
-    - [wann](Anfrage) habe ich [heute](wochentag) [Grundlagen Gestaltung und Typographie](Fach)
-    - [wann](Anfrage) habe ich [morgen](wochentag) [Grundlagen Interface und Interactionsdesign](Fach)
-    - [wann](Anfrage) habe ich [morgen](wochentag) [Projektmodul Start](Fach)
-    - [wo](Anfrage) habe ich [morgen](wochentag) [Projektmodul Start](Fach)
-    - [wo](Anfrage) findet [Mittwoch](wochentag) [Projektmodul Start](Fach) statt? 
+    -  [wann](Anfrage) habe ich [Grundlagen Gestaltung und Typographie](Fach) [morgen](wochentag)
+    -  [wann](Anfrage) habe ich [Montag](wochentag) [Computational Thinking](Fach)
+    -  [wann](Anfrage) habe ich [heute](wochentag) [Grundlagen Gestaltung und Typographie](Fach)
+    - [wann](Anfrage) habe ich [Dientag](wochentag) [Grundlagen Interface und Interactionsdesign](Fach)
+    - [wann](Anfrage) habe ich [Mittwoch](wochentag) [Projektmodul Start](Fach)
+    -  [wo](Anfrage) habe ich [Freitag](wochentag) [Projektmodul Start](Fach)
+    - [wo](Anfrage) findet [Freitag](wochentag) [Projektmodul Start](Fach) statt? 
     - [wo](Anfrage) haben wir [Donnerstag](wochentag) [Projektmodul Start](Fach)? 
 
 
@@ -228,5 +228,44 @@ nlu:
     - Bergfest?
     - Stammtisch oida!
     - Stammtisch?
+
+# - lookup: wochentag 
+#   examples: | 
+#     - montag
+#     - dienstag
+#     - mittwoch
+#     - donnerstag
+#     - freitag
+#     - samstag 
+#     - sonntag 
+#     - heute 
+#     - morgen 
+
+# - lookup: Fach
+#   examples: |
+#     - Computational Thinking
+#     - Grundlagen Gestaltung und Typographie
+#     - Grundlagen Interface und Interactionsdesign
+#     - Projektmodul Start 
+#     - PM 
+#     - pm 
+#     - GGT 
+#     - ggt 
+#     - ui 
+#     - ux 
+#     - ui ux 
+#     - Typographie 
+#     - Typo 
+#     - Grundlagen Interface
+#     - CT 
+#     - ct 
+# - lookup: Anfrage 
+#   examples: | 
+#     - wann 
+#     - wo 
+
+
+
+
 
 

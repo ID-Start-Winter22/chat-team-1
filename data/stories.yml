@@ -58,6 +58,9 @@ stories:
   steps: 
     - intent: welches_fach_habe_ich
     - action: fächerauswahl_tag
+    
+- story : wann_wo
+  steps: 
     - intent: Welches_Fach_Konkret
     - action: Wann_Wo
 

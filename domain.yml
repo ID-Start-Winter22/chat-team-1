@@ -24,6 +24,7 @@ actions:
   - fächerauswahl_tag
   - frage_nach_funktionen
   - Wann_Wo
+  - Organisations_Hauptfunktion
 
 entities:
   - username
