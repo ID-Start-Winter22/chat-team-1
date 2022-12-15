@@ -1,4 +1,4 @@
-# Chatbot Projektmodul Start - OrgiBot
+# Chatbot Projektmodul Start - Archimedes alias Archie
 
 Bei unserem Chatbot konzentrieren wir uns darauf, den studentischen Uni Alltag so gut wie moeglich zu vereinfachen.
 Hierbei ist es uns wichtig den Student:innen bei organisatorischen Angelegenheiten unter die Arme zu greifen.
