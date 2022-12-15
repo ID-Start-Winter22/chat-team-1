@@ -1,0 +1,178 @@
+version: "3.0"
+
+intents:
+  - greet
+  - greet_formal
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - my_name_is
+  - bot_challenge_name
+  - ask_travel_time
+  - welches_fach_habe_ich
+  - funktionsabfrage
+  - bot_challenge
+  - hat_Ofen_heute_auf
+  - ask_for_Lageplan
+  - Welches_Fach_Konkret
+  - fauler_Student
+  - zoom_link 
+
+actions:
+  - action_store_name
+  - action_get_name
+  - action_get_travel_time
+  - fächerauswahl_tag
+  - frage_nach_funktionen
+  - Wann_Wo
+  - zoom_link_antwort
+  - Organisations_Hauptfunktion
+  
+  
+
+entities:
+  - username
+  - from_station
+  - to_station
+  - wochentag 
+  - Anfrage
+  - Fach
+
+slots:
+  username:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: username
+  from_station:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: from_station
+  to_station:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: to_station
+  wochentag:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: wochentag
+  Fach:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: Fach
+  Anfrage:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: Anfrage
+
+
+  
+  
+
+responses:
+  utter_greet:
+  - text: "Hallo wie geht es Dir?"
+  - text: "Servus, wie isses?"
+  - text: "Hello there, wie geht's?"
+  - text: "Hi, wie geht's?"
+  - text: "Hey, wie geht's?"
+  - text: "Alles fit?"
+  - text: "Was geht ab?"
+  - text: "Was geht?"
+
+
+  utter_cheer_up:
+  - text: "Lass den Kopf nicht hängen. Schau mal:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Hilft das?"
+  - text: "Hat dir das geholfen?"
+  - text: "Geht es dir jetzt besser, {username}?"
+
+
+
+  utter_happy:
+  - text: "Toll weiter so."
+  - text: "Das freut mich sehr."
+  - text: "Das hör ich gerne."
+  - text: "Sehr nice!"
+
+  utter_goodbye:
+  - text: "Bye"
+  - text: "Tschüüss"
+  - text: "Tschuhuuuus - Tschuhuuuus"
+  - text: "Dann hol ich mir jetzt mal ein paar Mäuse und du dir die einser"
+  - text: "San Frantschüssco"
+  - text: "Hade Lan Peter Pan"
+  - text: "Bis Baldrian"
+  - text: "Bis Spätersillie"
+  - text: "Tschau mit Au"
+  - text: "See you later Aligator"
+  - text: "Und Abflug"
+  - text: "Tschüsselsdorf"
+
+
+  utter_iamabot:
+  - text: "Ich heiße Archimedes, aber meine Freunde nennen mich Archie! Ich helfe dir, wenns drum geht deinen Uni-Alltag zu organsisieren. Probiers doch einfach aus, oder Frag mich was ich alles kann ;). "
+  - text: "Ich heiße Archimedes und bin deine letzte Hoffnung mit dem ganzen Organisationskram fertig zu werden!  Probiers doch einfach aus, oder Frag mich was ich alles kann ;)."
+  - text: "Ich heiße Archimedes helfe dir bei den wichtigsten Fragen rund um deinen Uni Alltag.  Probiers doch einfach aus oder, Frag mich was ich alles kann ;)."
+
+  utter_greet_ask_name:
+  - text: "Hallo, wie heißt Du?"
+
+
+  utter_greet_with_name:
+  - text: "Hey, {username}. Alles klar?"
+  - text: "Hey, {username}. Alles fit?"
+  - text: "Hey, {username}. Brauchst du Hilfe?"
+
+  utter_ask_for_ofen:
+  - text: "Schön, dass du frägst ob der Ofen heute auf hat. Ja safe, der Ofen ist immer auf. Hier die Telefonnummer: 089/527527 "
+  - text: "Ich schau mal nach, oida!......      ja safe, der Ofen hat immer auf. Hier die Telefonnummer: 089/527527"
+  
+  utter_ask_for_Lageplan:
+  - text: "Schau mal, hier ist der Lageplan der Hoschule München."
+    image: "https://cdn.discordapp.com/attachments/1040271483001389067/1052225760183734272/ECEC37D1-9115-406E-8DA5-DDA78C11CDBB.jpeg"
+  
+  utter_fauler_Student:
+  - text: "Sag doch sowas nicht, du Fauler Student!"
+    image: "https://cdn.discordapp.com/attachments/1040271483001389067/1052268593812877332/giphy.gif"
+  - text: "Nimms nicht so schwer, bald ist wieder Ofen!"
+    image: "https://cdn.discordapp.com/attachments/1040271483001389067/1052268593812877332/giphy.gif"
+
+  - text: "Du bist doch kein Fauler Student, oder?"
+    image: "https://cdn.discordapp.com/attachments/1040271483001389067/1052268593812877332/giphy.gif"
+  - text: "Ist doch alles halb so wild!"
+    image: "https://cdn.discordapp.com/attachments/1040271483001389067/1052268593812877332/giphy.gif"
+  - text: "Mach doch vielleicht mal ein bisschen Sport, dann wird das schon wieder!"
+    image: "https://cdn.discordapp.com/attachments/1040271483001389067/1052268593812877332/giphy.gif"
+  - text: "Kopf hoch, so Tage gibt es halt. Morgen sieht die Welt wieder anders aus!"
+    image: "https://cdn.discordapp.com/attachments/1040271483001389067/1052268593812877332/giphy.gif"
+  - text: "Vielleicht hilft dir das hier ein bisschen:"
+    image: "https://cdn.discordapp.com/attachments/1040271483001389067/1052268593812877332/giphy.gif"
+
+  - text: "Wie Dori schon einst sagte:"
+    image: "https://cdn.discordapp.com/attachments/1040271483001389067/1052268593380851752/giphy_2.gif"
+  - text: "Alles wird gut!"
+    image: "https://cdn.discordapp.com/attachments/1040271483001389067/1052268593812877332/giphy.gif"
+  - text: "Hey, stop saying that!"
+    image: "https://cdn.discordapp.com/attachments/1040271483001389067/1052268534106968134/giphy_1.gif"
+
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

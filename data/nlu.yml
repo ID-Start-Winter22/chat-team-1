@@ -1,0 +1,327 @@
+version: "3.0"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - guten Tag
+    - Servus
+    - Hallo
+    - hallo
+    - was geht? 
+    - Alles fit, Archie?
+    - Wie geht's, Archie?
+    - Was geht ab, Archie?
+    
+- intent: greet_formal
+  examples: |
+    - guten Tag
+    - guten Abend
+    - guten Morgen
+
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - Bye
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+    - Tschüss
+    - Ciao
+    - ciao
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - safe
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+    - schon
+    - j
+    - ja
+    - jap
+    - yep
+    - genau
+    - korrekt
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+    - nicht wirklich
+    - nein
+    - ne
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+    - super
+    - gut
+    - perfekt
+    - mega
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+    - schlecht
+    - nicht gut
+    - traurig
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+    - wer bist du?
+    - bist du ein Mensch?
+    - spreche ich mit einem Chatbot?
+    - bist du ein bot?
+    - bist du real?
+
+- intent: my_name_is
+  examples: |
+    - Ich heiße [Gudrun](username)
+    - Ich heiße [Elias](username)
+    - Ich heiße [Gianni](username)
+    - Ich heiße [Konni](username)
+    - Ich heiße [Martin](username)
+    - Ich heiße [Smartin](username)
+    - Ich bin [Tina](username)
+    - Ich bin [Elias](username)
+    - Ich bin [Gianni](username)
+    - Ich bin [Konni](username)
+    - Ich bin [Martin](username)
+    - Mein Name ist [Anna](username)
+    - Mein Name ist [Elias](username)
+    - Mein Name ist [Gianni](username)
+    - Mein Name ist [Konni](username)
+    - Mein Name ist [Martin](username)
+    - Ich bin der [Horst](username)
+    - Ich bin der [Elias](username)
+    - Ich bin der [Gianni](username)
+    - Ich bin der [Konni](username)
+    - Ich bin der [Martin](username)
+    - [Elias](username)
+    - [Gianni](username)
+    - [Konni](username)
+    - [Martin](username)
+
+
+- intent: bot_challenge_name
+  examples: |
+    - Wer bin ich?
+    - Wie heisse ich?
+    - Kennst du mich noch?
+    - Erinnerst du dich an meinen Namen?
+    - Weißt du noch wer ich bin?
+
+- intent: ask_travel_time
+  examples: |
+    - Sag mir wie lange es von [Holzapfelkreuth](from_station) zur [Hochschule Muenchen](to_station) dauert.
+    - Wie lange brauche ich von der [Hochschule Muenchen](from_station) zum [Olympiazentrum](to_station)?
+    - Wie lange brauche ich von der [Hochschule Muenchen](from_station) zum [Heimeranplatz](to_station)?
+    - Wie lange brauche ich von der [Hochschule Muenchen](from_station) zur [Poccistrasse](to_station)?
+    - Wie lange brauche ich von der [Hochschule Muenchen](from_station) zum [Odeonsplatz](to_station)?
+    - [Hochschule München](from_station) nach [Garching](to_station)
+
+- intent: welches_fach_habe_ich
+  examples: | 
+    - Sag mir welches Fach ich [Montag](wochentag).
+    - Was habe ich für Fächer am [Dienstag](wochentag)?
+    - Welches fach habe ich [Mittwoch](wochentag)?
+    - Welche Fächer habe ich [Donnerstag](wochentag)?
+    - Was habe ich [heute](wochentag) für Fächer? 
+    - Was habe ich [morgen](wochentag) für Fächer? 
+    - Welche Fächer habe ich [Freitag](wochentag)? 
+    - Welches Fach habe ich [morgen](wochentag)? 
+    - Was habe ich am [Samstag](wochentag) ? 
+    - Was habe ich am [sonntag](wochentag)? 
+    - was steht [heute](wochentag) alles an? 
+    - was steht [heute](wochentag) alles an? 
+    - was steht [heute](wochentag) alles an? 
+
+    
+
+- intent: Welches_Fach_Konkret
+  examples: |
+    -  [wann](Anfrage) habe ich [Grundlagen Gestaltung und Typographie](Fach) [morgen](wochentag)
+    -  [wann](Anfrage) habe ich [Montag](wochentag) [Computational Thinking](Fach)
+    -  [wann](Anfrage) habe ich [heute](wochentag) [Grundlagen Gestaltung und Typographie](Fach)
+    - [wann](Anfrage) habe ich [Dientag](wochentag) [Grundlagen Interface und Interactionsdesign](Fach)
+    - [wann](Anfrage) habe ich [Mittwoch](wochentag) [Projektmodul Start](Fach)
+    -  [wo](Anfrage) habe ich [Freitag](wochentag) [Projektmodul Start](Fach)
+    - [wo](Anfrage) findet [Freitag](wochentag) [Projektmodul Start](Fach) statt? 
+    - [wo](Anfrage) haben wir [Donnerstag](wochentag) [Projektmodul Start](Fach)? 
+    - [wann](Anfrage) ist  Vorlesung [heute](wochentag) ? 
+    - [wo](Anfrage) ist [heute](wochentag) Vorlesung ? 
+    - [wann](Anfrage) ist [heute](wochentag) Vorlesung ? 
+    - [wo](Anfrage)  ist [heute](wochentag) Vorlesung ? 
+    - [wann](Anfrage) habe ich  Vorlesung [GGT](Fach) [morgen](wochentag)
+    - [wann](Anfrage) habe ich [Montag](wochentag) [CT](Fach)
+    - [wann](Anfrage) habe ich [Dientag](wochentag) [UI](Fach)
+    - [wann](Anfrage) habe ich  Vorlesung [Mittwoch](wochentag) [Projektmodul Start](Fach)
+    - [wo](Anfrage) habe ich [Freitag](wochentag) [Projektmodul Start](Fach)
+    - [wo](Anfrage) findet [Freitag](wochentag) [PM](Fach) statt? 
+    - [wo](Anfrage) haben wir  Vorlesung [Donnerstag](wochentag) [UX](Fach)? 
+
+
+- intent: funktionsabfrage
+  examples: |
+    - Was kannst du alles? 
+    - was sind deine Funktionen? 
+    - ich brauche deine Hilfe
+    - ich brauche hilfe
+    - wie kannst du mir helfen? 
+    - was soll ich mit dir? 
+    - wieso brauch ich dich? 
+    - für was brauche ich dich? 
+    - was bringst du ? 
+    - was kannst du?
+    - Hilfe
+    - hilfe
+    - h
+
+  
+- intent: hat_Ofen_heute_auf
+  examples: |
+    - Hat der Ofen heute auf?
+    - Ist Ofen?
+    - alter Ofen?
+    - ist Bergfest?
+    - Alter Ofen?
+    - Bergfest?
+    - Stammtisch oida!
+    - Stammtisch?
+
+# - lookup: wochentag 
+#   examples: | 
+#     - montag
+#     - dienstag
+#     - mittwoch
+#     - donnerstag
+#     - freitag
+#     - samstag 
+#     - sonntag 
+#     - heute 
+#     - morgen 
+
+# - lookup: Fach
+#   examples: |
+#     - Computational Thinking
+#     - Grundlagen Gestaltung und Typographie
+#     - Grundlagen Interface und Interactionsdesign
+#     - Projektmodul Start 
+#     - PM 
+#     - pm 
+#     - GGT 
+#     - ggt 
+#     - ui 
+#     - ux 
+#     - ui ux 
+#     - Typographie 
+#     - Typo 
+#     - Grundlagen Interface
+#     - CT 
+#     - ct 
+# - lookup: Anfrage 
+#   examples: | 
+#     - wann 
+#     - wo 
+
+- intent : zoom_link 
+  examples: |
+    - ich brauche den Zoom link für [CT](Fach)
+    - zoom link [GGT](Fach)
+    - hallo was war der zoom link für [GWA](Fach)
+    - wie war der zoom link [GWA](Fach)
+
+
+
+- intent: ask_for_Lageplan
+  examples: |
+    - Wo ist das R-Gebäude?
+    - Wo ist das X-Gebäude?
+    - Wo ist das C-Gebäude?
+    - Wo ist das B-Gebäude?
+    - Wo ist das A-Gebäude?
+    - Wo ist das D-Gebäude?
+    - Wo ist die Bibliothek?
+    - Wo ist die Mensa?
+    - Wo ist das E-Geäude?
+    - Wo ist das H-Gebäude?
+    - Wo ist das I-Gebäude?
+    - Wo ist das T-Gebäude?
+    - Wo ist das S-Gebäude?
+    - Wo ist das W-Gebäude?
+    - Hast du einen Lageplan?
+    - Wo muss ich hin?
+    - Wo ist der Eingang?
+
+- intent: fauler_Student
+  examples: |
+    - Ich bin faul
+    - Ich bin faul und will nicht mehr lernen
+    - Ich will heute nicht lernen
+    - Ich will nicht in die Uni
+    - Ich habe keinen Bock auf Uni
+    - Ich bin müde
+    - Ich bin müde und will nicht mehr lernen
+    - Ich habe keine Lust auf Uni
+    - Uni ist Scheiße
+
+
+

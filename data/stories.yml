@@ -1,0 +1,104 @@
+version: "3.0"
+
+stories:
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+- story: greet_with_name
+  steps:
+  - intent: greet_formal
+  - action: utter_greet_ask_name
+  - intent: my_name_is
+  - action: action_store_name
+  - action: utter_greet_with_name
+
+- story: greet_with_name2
+  steps:
+  - intent: greet
+  - action: action_store_name
+  - action: utter_greet_ask_name
+  - intent: my_name_is
+  - action: utter_greet_with_name
+
+- story: Ask the bot if it remembers user's name
+  steps:
+  - intent: bot_challenge_name
+  - action: action_get_name
+
+- story: Ask for travel time between two MVG stations
+  steps:
+  - intent: ask_travel_time
+  - action: action_get_travel_time
+
+- story : Sag mir welche fächer ich wann habe 
+  steps: 
+    - intent: welches_fach_habe_ich
+    - action: fächerauswahl_tag
+    
+- story : wann_wo
+  steps: 
+    - intent: Welches_Fach_Konkret
+    - action: Wann_Wo
+
+- story: frage_nach_funktionen
+  steps: 
+    - intent: bot_challenge
+    - action: utter_iamabot
+    - intent: funktionsabfrage
+    - action: frage_nach_funktionen
+  
+- story: hat_Ofen_heute_auf
+  steps: 
+    - intent: hat_Ofen_heute_auf
+    - action: utter_ask_for_ofen
+
+- story: uni_Lageplan
+  steps: 
+    - intent: ask_for_Lageplan
+    - action: utter_ask_for_Lageplan
+
+- story: fauler_sack
+  steps: 
+    - intent: fauler_Student
+    - action: utter_fauler_Student
+    - action: utter_did_that_help
+    - intent: affirm
+    - action: utter_happy
+
+- story : zoom_link_frage
+  steps: 
+    - intent : zoom_link
+    - action : zoom_link_antwort
+
+# - story: fauler_sack2
+#   steps: 
+#     - intent: fauler_Student
+#     - action: utter_fauler_Student
+#     - action: utter_did_that_help
+#     - intent: deny
+#     - action: utter_fauler_Student
+#     - action: utter_did_that_help

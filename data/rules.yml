@@ -1,0 +1,24 @@
+version: "3.0"
+
+rules:
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+
+- rule : Antwort mir auf die Frage was kannst du alles ? 
+  steps: 
+  - intent: funktionsabfrage
+  - action: frage_nach_funktionen
+
+- rule : wo_und_wann
+  steps: 
+  - intent: Welches_Fach_Konkret
+  - action: Wann_Wo
+
