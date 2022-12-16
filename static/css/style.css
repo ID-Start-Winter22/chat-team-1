@@ -823,9 +823,10 @@ video:focus {
 /* Bot pop-up intro */
 
 .tap-target {
-  color: #fff;
-  background: #060dcfc7;
+  color: #9f41da; /* used to be #fff */
+  background: #5c2d8c;
 }
+/*  Gold: #f9b940, Hell-Lila: #9f41da, Mittel-Lila: #5c2d8c, Dunkel-Lila: #302b4e  */
 
 .pdf_attachment {
   border: 0.5px solid #00000014;
