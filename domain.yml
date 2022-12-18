@@ -176,7 +176,7 @@ responses:
   utter_konter_beleidung :
   - text: "Ich mag vielleicht der Sohn einer Eule sein, aber das ist kein Grund mich zu beleidigen. Ich versuche dir auch nur zu helfen"
   - text : "Eigentlich bist du doch nur auf dich selbst sauer. Kopf hoch. Manchmal ist man frustriert. Aber es wird auch wieder besser. Gönn dir eine Pause"
-  - text : "Ich hoffe dass es dir besser geht, nachdem du etwas Frust ablassen konntest. Aber das ist nicht der richtige Weg. Achte auf dein psychische Gesundheit. Schlafe und esse genug trotz dem Studienstress! "
+  - text : "Ich hoffe, dass es dir besser geht, nachdem du etwas Frust ablassen konntest. Aber das ist nicht der richtige Weg. Achte auf deine psychische Gesundheit. Schlafe und esse genug trotz dem Studienstress! "
   - text : "Ist schon wieder Prüfungsphase? Kein Grund die Decke hochzugehen. Es wird alles gut und es gibt immer einen Weg! "
 
 
