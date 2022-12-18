@@ -323,5 +323,15 @@ nlu:
     - Ich habe keine Lust auf Uni
     - Uni ist Scheiße
 
-
+- intent: beleidigung_sohn_einer_eule 
+  examples : |
+    - du Hurensohn 
+    - du Arschloch 
+    - Du wichscher
+    - fick dich 
+    - leck mich am arsch 
+    - du bist nutzlos 
+    - du Uhu-rensohn 
+    - arschgeige 
+    - du sohn einer Eule 
 

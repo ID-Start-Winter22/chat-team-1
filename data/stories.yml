@@ -94,6 +94,13 @@ stories:
     - intent : zoom_link
     - action : zoom_link_antwort
 
+- story : beleidigungen 
+  steps: 
+    - intent: beleidigung_sohn_einer_eule 
+    - action : utter_konter_beleidung
+
+
+
 # - story: fauler_sack2
 #   steps: 
 #     - intent: fauler_Student

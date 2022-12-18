@@ -19,6 +19,7 @@ intents:
   - Welches_Fach_Konkret
   - fauler_Student
   - zoom_link 
+  - beleidigung_sohn_einer_eule 
 
 actions:
   - action_store_name
@@ -171,6 +172,13 @@ responses:
     image: "https://cdn.discordapp.com/attachments/1040271483001389067/1052268593812877332/giphy.gif"
   - text: "Hey, stop saying that!"
     image: "https://cdn.discordapp.com/attachments/1040271483001389067/1052268534106968134/giphy_1.gif"
+  
+  utter_konter_beleidung :
+  - text: "Ich mag vielleicht der Sohn einer Eule sein, aber das ist kein Grund mich zu beleidigen. Ich versuche dir auch nur zu helfen"
+  - text : "Eigentlich bist du doch nur auf dich selbst sauer. Kopf hoch. Manchmal ist man frustriert. Aber es wird auch wieder besser. Gönn dir eine Pause"
+  - text : "Ich hoffe dass es dir besser geht, nachdem du etwas Frust ablassen konntest. Aber das ist nicht der richtige Weg. Achte auf dein psychische Gesundheit. Schlafe und esse genug trotz dem Studienstress! "
+  - text : "Ist schon wieder Prüfungsphase? Kein Grund die Decke hochzugehen. Es wird alles gut und es gibt immer einen Weg! "
+
 
 
 session_config:
