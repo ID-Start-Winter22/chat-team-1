@@ -131,9 +131,12 @@ class ActionUserName(Action):
         return "frage_nach_funktionen"
 
     def run(self, dispatcher, tracker, domain):
-        antwort= ("Ich helfe dir bei der Organisation deines Unialltags und kann dir beispielsweise bei folgenden Fragen weiterhelfen: \n - Was habe ich heute für Fächer? \n - Wann beginnt die Vorlesung? \n - Wo findet die Voresung statt? \n - Was steht heute alles an? \n - Dich aufheitern, wenn es mal nicht so läuft \n - Dir einen Lageplan schicken Und noch einiges mehr. Probiers doch einfach mal aus :). ")
 
-        dispatcher.utter_message(antwort)
+        def antwort():
+            antwort= ("Ich helfe dir bei der Organisation deines Unialltags und kann dir beispielsweise bei folgenden Fragen weiterhelfen: \n - Was habe ich heute für Fächer? \n - Wann beginnt die Vorlesung? \n - Wo findet die Voresung statt? \n - Was steht heute alles an? \n - Dich aufheitern, wenn es mal nicht so läuft \n - Dir einen Lageplan schicken Und noch einiges mehr. Probiers doch einfach mal aus :). ")
+
+            dispatcher.utter_message(antwort)
+        antwort() 
 
         return[]
 
@@ -228,57 +231,3 @@ class ActionUserName(Action):
 
         return[]
 
-# class ActionUserName(Action):
-
-#      def name(self):
-#          return "Organisations_Hauptfunktion"
-
-#      def run(self, dispatcher, tracker, domain):
-#         #slots holen und strings anpassen 
-#         frage = tracker.get_slot("Anfrage")
-#         if frage : frage=frage.lower()
-#         fach = tracker.get_slot("Fach") 
-#         if fach : fach = fach.lower()
-#         wochentag = tracker.get_slot("wochentag")
-#         if wochentag : wochentag = wochentag.lower() 
-
-#         #dictionaries mit informationen holen 
-#         fächerproTag = {'montag': ('Computational Thinking CT','8: 15- 9:45', 'R0.058'), 'dienstag' : ('computational thinking ct', '10:00 - 11:30', 'E0.103'), 'mittwoch': ('grundlagen interface und interactionsdesign ui ux', '16:30 - 18:00', 'X1.018'), 'donnerstag': ('grundlagen gestaltung und typographie ggt', '13:00 - 16:15', 'X1.018'), 'freitag': ('projektmodul start pm', '10:30 - 13:30', 'Pavillion X - Gebäude'), 'samstag': 'Es ist Wochenende. Da hat man keine Vorlesung sondern Freizeit. Lass es dir auch mal etwas gut gehen ', 'sonntag': ' Es ist Wochenende. Da hat man keine Vorlesung sondern Freizeit. Lass es dir auch mal etwas gut gehen'} 
-#         wochenliste = ['montag', 'dienstag', 'mittwoch', 'donnerstag', 'freitag','samstag', 'sonntag']
-#         today = datetime.today().weekday()
-#         today= wochenliste[today]
-        
-#         #fehler wenn frage nach wochenende
-#         if wochentag =='samstag' or wochentag== "sonntag" or today == 'samstag' or today == 'sonntag': 
-#             dispatcher.utter_message(fächerproTag('samstag'))
-
-#         # dictionary öffenen mit tag 
-#         elif wochentag and wochentag in fächerproTag: 
-#             value_tag = fächerproTag[wochentag] #dict. ist jetzt offen inhalt in value_tag gespeichert 
-            
-#             # suche nach Fach welches ich auslesen möchte 
-#             fach = fach.split()
-#             if fach: 
-#                 for i in fach: 
-#                     if i in value_tag[0].lower(): 
-#                         fach_ausgabe = value_tag[0] 
-#                         break 
-#                     if i not in fach: 
-#                         fach_ausgabe = 'UHUU da hab ich das Fach leider nicht gefunden . Könntest du deine frage noch einmal stellen?'
-
-#             if fach_ausgabe != 'UHUU da hab ich das Fach leider nicht gefunden. Könntest du deine frage noch einmal stellen?':
-#                 if frage == 'was':
-#                     dispatcher.utter_message(f'Du hast am {wochentag} die Fächer: {value_tag[0]} ')
-#                 elif frage =="wo": 
-#                     dispatcher.utter_message(f'Du hast das {fach_ausgabe} im Raum: {value_tag[2]}')
-#                 elif frage == "wann": 
-#                     dispatcher.utter_message(f'Du hast das {fach_ausgabe} um {value_tag[1]}')
-#                 else: 
-#                     dispatcher.utter_message(f"mhhh ich weiß leider nicht was du genau von mir wolltest... kannst du dene Frage bitte noch einmal wiederholen?")
-
-
-                    
-#             # fehler wenn kein fach oder falsches fach 
-#             else : dispatcher.utter_message('UHUU da hab ich das Fach leider nicht gefunden. Könntest du deine frage noch einmal stellen? Vielleicht hast ud das Fach an einem anderen Tag')
-
-#         return[AllSlotsReset()]
