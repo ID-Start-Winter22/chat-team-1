@@ -135,14 +135,20 @@ class ActionUserName(Action):
             fach = fächerdict(datum)
         try: 
             wochentag = tracker.get_slot('wochentag')
+            
             wochentag = wochentag.lower() 
-            tagesauswahl(wochentag)
+            if wochentag == 'samstag' or wochentag == 'sonntag': 
+                dispatcher.utter_message('UHUUU da ist Wochenende. Da hat man doch keine Vorlesung sondern Freizeit. Genieß es und nimm dir auch mal etwas Zeit für dich selber. Ich gehe zum Beispiel sehr gerne Mäuse fangen an den Wochenenden!')
+            else: 
+                wochentag_richtig= wochentag[0].upper() + wochentag[1::]
+                if wochentag== 'heute' or wochentag== 'morgen': 
+                    dispatcher.utter_message(f'Du hast {wochentag} die Veranstaltungen:')
+                    tagesauswahl(wochentag)
+                else: 
+                    dispatcher.utter_message(f'Du hast am {wochentag_richtig} die Veranstaltungen:')
+                    tagesauswahl(wochentag)
         except: 
             dispatcher.utter_message('Das habe ich leider nicht Verstanden. Du hast wohl nach deinen Veranstaltungen gefragt. Bitte stelle sicher, dass du den Wochentag richtig schreibst. Ich versteh außerdem auch, wenn du mich frägst: \"Welches Fach habe ich heute/ morgen ?\" ')
-
-
-
-
         return[AllSlotsReset()]
 
 class ActionUserName(Action):
