@@ -10,7 +10,9 @@ from rasa_sdk.events import AllSlotsReset
 from sys import displayhook
 from typing import Any, Text, Dict, List
 from pyparsing import nestedExpr
-from datetime import datetime
+
+import icalendar
+from datetime import datetime, timedelta
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
@@ -80,47 +82,65 @@ class ActionUserName(Action):
      def run(self, dispatcher, tracker, domain):
 
 
-        wochentag= tracker.get_slot("wochentag")
-        if wochentag : wochentag = wochentag.lower()
-        fächerproTag = {'montag': ('Computational Thinking','8: 15- 9:45'), 'dienstag' : ('Computational Thinking', '10:00 - 11:30'), 'mittwoch': ('Grundlagen Interface und Interactionsdesign', '16:30 - 18:00'), 'donnerstag': ('Grundlagen Gestaltung und Typographie', '13:00 - 16:15'), 'freitag': ('Projektmodul Start', '10:30 - 13:30'), 'samstag': 'Es ist Wochenende. Da hat man keine Vorlesung sondern Freizeit. Lass es dir auch mal etwas gut gehen ', 'sonntag': ' Es ist Wochenende. Da hat man keine Vorlesung sondern Freizeit. Lass es dir auch mal etwas gut gehen'} 
-        wochenliste = ['montag', 'dienstag', 'mittwoch', 'donnerstag', 'freitag','samstag', 'sonntag']
+        def fächerdict(datum) : 
+            fächercount = []
+            dict = {}
+            # Kalender file öffnen
+            with open('nine.ics', 'rb') as f:
+                #Kalender file auslesen
+                calendar = icalendar.Calendar.from_ical(f.read())
+                
 
-        today = datetime.today().weekday()
+            # Durch die Events durchlaufen
+            for component in calendar.walk():
+                if component.name == "VEVENT":
+                    vdt =  component.get('dtstart')
+                    decode= str(icalendar.vDDDTypes.from_ical(vdt))
+                    veranstaltung = str(component.get('summary'))
+                    ort = component.get('location')
+                    dict[decode]= veranstaltung, ort
+            for i in dict: 
+                if datum in i: 
+                    veranstaltung =  (dict[i][0] )
+                    dispatcher.utter_message(veranstaltung)
+                    ort =  (dict[i][1] )
+                    print(ort)
+                    veranstaltungszeit = str(i)  
+                    dispatcher.utter_message(veranstaltungszeit[11:-3:])
+                    fächercount.append(str(i)) 
+            if len(fächercount  ) == 0 : 
+                    dispatcher.utter_message('Mhh ich sehe grade, dass du an dem gefragten Tag gar keine Vorlesung hast')
+                
+        def next_weekday(weekday: int) -> str : 
+            # Get today's date and find the next weekday
+            today = datetime.now()
+            days_ahead = weekday - today.weekday()
+            if days_ahead <= 0:  # Target day already happened this week
+                days_ahead += 7
+            datum = str(today + timedelta(days_ahead))
+            datum_sort = datum[0:11]
+            return datum_sort
 
-        today= wochenliste[today]
-        today= fächerproTag[today]
+        def tagesauswahl(wochentag) : 
+            wochentage = ('montag', 'dienstag', 'mittwoch', 'donnerstag', 'freitag', 'samstag', 'sonntag')
+            if wochentag == 'heute': 
+                heute = str(datetime.today())
+                datum = heute[0:11]
+            if wochentag == 'morgen': 
+                morgen = (int(datetime.today().weekday() +1 ))
+                datum = next_weekday(morgen)
+            if wochentag in wochentage: 
+                tag_nummer =  wochentage.index(wochentag)
+                datum = next_weekday(tag_nummer)
+            fach = fächerdict(datum)
+        try: 
+            wochentag = tracker.get_slot('wochentag')
+            wochentag = wochentag.lower() 
+            tagesauswahl(wochentag)
+        except: 
+            dispatcher.utter_message('Das habe ich leider nicht Verstanden. Du hast wohl nach deinen Veranstaltungen gefragt. Bitte stelle sicher, dass du den Wochentag richtig schreibst. Ich versteh außerdem auch, wenn du mich frägst: \"Welches Fach habe ich heute/ morgen ?\" ')
 
 
-        if not wochentag: 
-            dispatcher.utter_message('Das habe ich entweder nicht verstanden oder du hast was vercheckt und du frägst mich gerade ernsthaft ob du am Wochenende eine Vorlesung hast :)')
-
-        elif wochentag in fächerproTag and wochentag != 'samstag' or wochentag == 'sonntag': 
-            dispatcher.utter_message(f'Du hast am {wochentag} die Fächer {fächerproTag[wochentag][0]} um {fächerproTag[wochentag][1]}')
-        elif wochentag == 'samstag' or wochentag == 'sonntag': 
-            dispatcher.utter_message('Es ist Wochenende. Da hat man keine Vorlesung sondern Freizeit. Lass es dir auch mal etwas gut gehen  ')
-
-
-        elif wochentag == 'heute' : 
-            dispatcher.utter_message(f'Du hast heute das Fach {today[0]} um {today[1]} ')
-
-        elif wochentag == 'morgen': 
-            tomorrow = datetime.today().weekday()
-            tomorrow += 1 
-            tomorrow %= len(wochenliste)
-            wochenendcount = tomorrow
-            tomorrow = wochenliste[tomorrow]
-            
-            if wochenendcount <= 4: 
-                tomorrow = fächerproTag[tomorrow]
-                dispatcher.utter_message(f'Du hast morgen das Fach {tomorrow[0]} um  {tomorrow[1]} ')
-            else: 
-                dispatcher.utter_message('Es ist Wochenende. Da hat man keine Vorlesung sondern Freizeit. Lass es dir auch mal etwas gut gehen  ')
-            del wochentag 
-
-        else: 
-            if wochentag== 'samstag' or wochentag == 'sonntag' : 
-                dispatcher.utter_message('Es ist wochenende. Da hat man keine Vorlesung sondern Freizeit. Lass es dir auch mal etwas gut gehen ')
-            else: dispatcher.utter_message('Das hab ich jetzt nicht verstanden. Frag doch bitte nochmal genauer wenn es um deinen Stundenplan ging.')
 
 
         return[AllSlotsReset()]
