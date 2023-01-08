@@ -74,7 +74,7 @@ class ActionMVG(Action):
 
         return []
 
-class ActionUserName(Action):
+class ActionFächerauswahlTag(Action):
 
      def name(self):
          return "fächerauswahl_tag"
@@ -89,8 +89,7 @@ class ActionUserName(Action):
             with open('nine.ics', 'rb') as f:
                 #Kalender file auslesen
                 calendar = icalendar.Calendar.from_ical(f.read())
-                
-
+            
             # Durch die Events durchlaufen
             for component in calendar.walk():
                 if component.name == "VEVENT":
@@ -102,11 +101,10 @@ class ActionUserName(Action):
             for i in dict: 
                 if datum in i: 
                     veranstaltung =  (dict[i][0] )
-                    dispatcher.utter_message(veranstaltung)
                     ort =  (dict[i][1] )
-                    print(ort)
                     veranstaltungszeit = str(i)  
-                    dispatcher.utter_message(veranstaltungszeit[11:-3:])
+                    ort = str(ort)
+                    dispatcher.utter_message(f' {veranstaltung} um {veranstaltungszeit[11:-3:]} im Raum {ort} ' )
                     fächercount.append(str(i)) 
             if len(fächercount  ) == 0 : 
                     dispatcher.utter_message('Mhh ich sehe grade, dass du an dem gefragten Tag gar keine Vorlesung hast')
@@ -149,6 +147,7 @@ class ActionUserName(Action):
                     tagesauswahl(wochentag)
         except: 
             dispatcher.utter_message('Das habe ich leider nicht Verstanden. Du hast wohl nach deinen Veranstaltungen gefragt. Bitte stelle sicher, dass du den Wochentag richtig schreibst. Ich versteh außerdem auch, wenn du mich frägst: \"Welches Fach habe ich heute/ morgen ?\" ')
+       
         return[AllSlotsReset()]
 
 class ActionUserName(Action):
@@ -166,71 +165,165 @@ class ActionUserName(Action):
 
         return[]
 
-class ActionUserName(Action):
-
+class ActionWannWo(Action):
+    
      def name(self):
         return "Wann_Wo"
 
      def run(self, dispatcher, tracker, domain):
 
-        try: 
-            fächerproTag = {'montag': ('computational thinking ct','8: 15- 9:45', 'R0.058'), 'dienstag' : ('computational thinking ct', '10:00 - 11:30', 'E0.103'), 'mittwoch': ('grundlagen interface und interactionsdesign ui ux', '16:30 - 18:00', 'X1.018'), 'donnerstag': ('grundlagen gestaltung und typographie ggt', '13:00 - 16:15', 'X1.018'), 'freitag': ('projektmodul start pm', '10:30 - 13:30', 'Pavillion X - Gebäude')} 
-            wochenliste = ['montag', 'dienstag', 'mittwoch', 'donnerstag', 'freitag','samstag', 'sonntag']
-
-
-            today = datetime.today().weekday()
-            today= wochenliste[today]
-            today= fächerproTag[today]
-
-            frage = tracker.get_slot("Anfrage")
-            if frage : frage=frage.lower()
-            fach = tracker.get_slot("Fach") 
-            if fach : fach = fach.lower()
-            wochentag = tracker.get_slot("wochentag")
-            if wochentag : wochentag = wochentag.lower() 
-
+        def fächerdict(datum) : 
+    
+            fächer_am_tag = []
+            fächercount = []
+            dict = {}
+            # Kalender file öffnen
+            with open('nine.ics', 'rb') as f:
+                #Kalender file auslesen
+                calendar = icalendar.Calendar.from_ical(f.read())
             
-            if wochentag: 
-                if fach and fach in fächerproTag[wochentag][0]: 
+            # Durch die Events durchlaufen
+            for component in calendar.walk():
+                if component.name == "VEVENT":
+                    vdt =  component.get('dtstart')
+                    decode= str(icalendar.vDDDTypes.from_ical(vdt))
+                    veranstaltung = str(component.get('summary'))
+                    ort = component.get('location')
+                    dict[decode]= veranstaltung, ort
+            for i in dict: 
+                if datum in i: 
+                    veranstaltung =  (dict[i][0] )
+                    ort =  (dict[i][1] )
+                    veranstaltungszeit = str(i)  
+                    ort = str(ort)
+                    fach_info = []
+                    fach_info.append(veranstaltung)
+                    fach_info.append(veranstaltungszeit)
+                    fach_info.append(ort)
+                    fächer_am_tag.append(tuple(fach_info) )
+                    fächercount.append(str(i)) 
+            if len(fächercount) == 0 : 
+                    dispatcher.utter_message('Mhh ich sehe grade, dass du an dem gefragten Tag gar keine Vorlesung hast')
 
-                    if frage == 'wann': 
-                        dispatcher.utter_message(f'Du hast das Fach {fächerproTag[wochentag][0]} am {wochentag}  um {fächerproTag[wochentag][1]} ') 
-
-                    if frage == 'wo': 
-                        dispatcher.utter_message(f'Du hast das Fach {fächerproTag[wochentag][0]} am {wochentag}  im {fächerproTag[wochentag][2]} ')
-                        #Lageplan
+            return fächer_am_tag
 
 
-                if not fach or fach not in fächerproTag[wochentag][0]: 
-                    dispatcher.utter_message(f'UHUUUUU! Ich glaube du hast das Fach am {wochentag} gar nicht. Aber du hast an diesem Tag: ')
+        def next_weekday(weekday: int) -> str : 
+            # Get today's date and find the next weekday
+            today = datetime.now()
+            days_ahead = weekday - today.weekday()
+            if days_ahead <= 0:  # Target day already happened this week
+                days_ahead += 7
+            datum = str(today + timedelta(days_ahead))
+            datum_sort = datum[0:11]
+            return datum_sort
 
-                    if frage =='wann':
-                        dispatcher.utter_message(f'Das Fach {fächerproTag[wochentag][0]} um {fächerproTag[wochentag][1]} ')
-                    if frage =='wo':
-                        dispatcher.utter_message(f'Das Fach {fächerproTag[wochentag][0]} im Raum {fächerproTag[wochentag][2]} ')
+        def tagesauswahl(wochentag) : 
+            wochentage = ('montag', 'dienstag', 'mittwoch', 'donnerstag', 'freitag', 'samstag', 'sonntag')
+            if wochentag == 'heute': 
+                heute = str(datetime.today())
+                datum = heute[0:11]
+            if wochentag == 'morgen': 
+                morgen = (int(datetime.today().weekday() +1 ))
+                datum = next_weekday(morgen)
+            if wochentag in wochentage: 
+                tag_nummer =  wochentage.index(wochentag)
+                datum = next_weekday(tag_nummer)
+            fächer_am_tag = fächerdict(datum)
+            
+            return fächer_am_tag
 
-            if not wochentag or wochentag == 'heute': 
-                wochentag= 'heute'
 
-                if fach and fach in today[0]: 
 
-                    if frage == 'wann': 
-                        dispatcher.utter_message(f'Du hast heute das Fach {today[0]} um {today[1]}') 
-                    if frage == 'wo': 
-                        dispatcher.utter_message(f'Du hast heute das Fach {today[0]} im Raum: {today[2]}')
-                        #Lageplan einfügen 
+        def fach_select(fächer_am_tag, fach) : #Filter Funktion für Fachauswahl für die Vorlesung keine gute Rechtschreibung kein PrOPlem es reicht wenn man Anfangsbuchtstabe der Fächer nimmt. Co Pr = Computational Thinking Prakitkum
+            selectionlist= 'Eintrag nicht gefunden'  #hat mich Nerven gekostet, dass auch ja das richtige Fach rauskommt, auch wenn sich Namen überschneiden. Montag CT VL und CT Praktikum
+                                                    #nur Praktikum wenn danach gefragt wird ! 
+            
+            zwischencounter = 0
+            for eintrag in fächer_am_tag: 
+                truecounter = 0 
+                for wort in fach: 
+                    if wort in eintrag[0].lower(): 
+                        truecounter += 1 
 
-                if not fach or fach not in today[0]: 
-                    dispatcher.utter_message('Ich glaube du hast das Fach heute gar nicht. Aber du hast heute: ')
+                if truecounter > zwischencounter: 
+                    selectionlist = eintrag
+                zwischencounter = truecounter
+                
+            return selectionlist
 
-                    if frage =='wann':
-                        dispatcher.utter_message(f'Das Fach {today[0]} um {today[1]} ')
-                    if frage =='wo':
-                        dispatcher.utter_message(f'Das Fach {today[0]} im Raum {today[2]} ')
+
+
+        def tag_selection(fächer_am_tag, fach) : 
+            selectionlist= 'Eintrag nicht gefunden'
+                                                    
+            
+            zwischencounter = 0
+            for eintrag in fächer_am_tag: 
+                truecounter = 0 
+                for wort in fach: 
+                    if wort in eintrag.lower(): 
+                        truecounter += 1 
+
+                if truecounter > zwischencounter: 
+                    selectionlist = eintrag
+                zwischencounter = truecounter
+                
+            return selectionlist
+
+
+
+        
+
+
+        try: 
+            wochentag = tracker.get_slot('wochentag')
+            fach = tracker.get_slot('Fach')
+            wochentage = ('montag', 'dienstag', 'mittwoch', 'donnerstag', 'freitag', 'samstag', 'sonntag')
+            anfrage = tracker.get_slot('Anfrage')
+            anfrage=anfrage.lower() 
+            dispatcher.utter_message(f'a = {wochentag}, b= {fach}, c = {anfrage}')
+            if wochentag == 'samstag' or wochentag == 'sonntag': 
+                dispatcher.utter_message('UHUUU da ist Wochenende. Da hat man doch keine Vorlesung sondern Freizeit. Genieß es und nimm dir auch mal etwas Zeit für dich selber. Ich gehe zum Beispiel sehr gerne Mäuse fangen an den Wochenenden!')
+            else: 
+                
+
+                if wochentag== 'heute' or wochentag== 'morgen': 
+                    
+                    fächer_am_tag = tagesauswahl(wochentag)
+                    selectionlist = fach_select(fächer_am_tag, fach)
+                    dispatcher.utter_message(f'Die gefragte Vorlesung: {selectionlist[0]}, findet {wochentag} im Raum {selectionlist[2]} statt')
+
+                    
+
+
+                else: 
+                    wochentag = wochentag.split() 
+                    wochentag_richtig = tag_selection(wochentage, wochentag)
+                    
+                    wochentag_richtig_groß = wochentag_richtig[0].upper() + wochentag_richtig[1::]
+                    
+                    fächer_am_tag = tagesauswahl(wochentag_richtig)
+                    
+                    fach = fach.lower().split()
+                    selectionlist = fach_select(fächer_am_tag, fach)
+
+                    if len(fach)!= 0 and selectionlist!= 'Eintrag nicht gefunden': 
+                        
+
+                        if anfrage == 'wo': 
+                            dispatcher.utter_message(f'Die gefragte Vorlesung: {selectionlist[0]}, findet am {wochentag_richtig_groß} im Raum {selectionlist[2]} statt')
+                        if anfrage == 'wann': 
+                            dispatcher.utter_message(f'Die gefragte Vorlesung: {selectionlist[0]}, findet am {wochentag_richtig_groß} um {selectionlist[1][11:-3]} statt')
+                    
+                    elif selectionlist == 'Eintrag nicht gefunden': 
+                        dispatcher.utter_custom_message('Du hast das Fach gar nicht an diesem Tag. Du kannst auch Fragen: welche Fächer habe ich (Wochentag) um eine allgemeine Übersicht zu erhalten')
+
+                    else: dispatcher.utter_message('UHUUU da ist wohl irgendwas schief gegangen. Du kannst auch Fragen: welche Fächer habe ich (Wochentag) um eine allgemeine Übersicht zu erhalten')
         except: 
-            dispatcher.utter_message(f'Tut mir leid das verstehe ich noch nicht genau. um diese Funktion zu verwenden musst du mir genau den Tag und das Modul sagen. Und die Schlagwörter wo und wann verwenden. ')
 
-
+            dispatcher.utter_message('UHUUU das habe ich leider nicht genau verstanden. Um diese Funktion zu verwenden musst du mindestens den Anfang des Wochentages und der gewünschten Vorlesung sagen. ')
+            dispatcher.utter_message( 'Du kannst auch Fragen: welche Fächer habe ich (Wochentag) um eine allgemeine Übersicht zu erhalten')
         return[AllSlotsReset()]
 
 class ActionUserName(Action):
