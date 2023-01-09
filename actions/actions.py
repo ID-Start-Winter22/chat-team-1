@@ -278,6 +278,8 @@ class ActionWannWo(Action):
 
         try: 
             wochentag = tracker.get_slot('wochentag')
+            if wochentag == None: 
+                wochentag = 'heute'
             fach = tracker.get_slot('Fach')
             wochentage = ('montag', 'dienstag', 'mittwoch', 'donnerstag', 'freitag', 'samstag', 'sonntag')
             anfrage = tracker.get_slot('Anfrage')
