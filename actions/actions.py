@@ -350,5 +350,5 @@ class ActionUserName(Action):
             dispatcher.utter_message(f'Der Zoom link für das Fach {fach} lautet : {link}')
         except: dispatcher.utter_message('Für dieses Fach habe ich leider keinen Link gefunden')
 
-        return[]
+        return[AllSlotsReset()]
 
