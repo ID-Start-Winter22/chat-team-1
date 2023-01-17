@@ -256,8 +256,6 @@ class ActionWannWo(Action):
 
         def tag_selection(fächer_am_tag, fach) : 
             selectionlist= 'Eintrag nicht gefunden'
-                                                    
-            
             zwischencounter = 0
             for eintrag in fächer_am_tag: 
                 truecounter = 0 
@@ -289,14 +287,16 @@ class ActionWannWo(Action):
                 dispatcher.utter_message('UHUUU da ist Wochenende. Da hat man doch keine Vorlesung sondern Freizeit. Genieß es und nimm dir auch mal etwas Zeit für dich selber. Ich gehe zum Beispiel sehr gerne Mäuse fangen an den Wochenenden!')
             else: 
                 
-
                 if wochentag== 'heute' or wochentag== 'morgen': 
                     
                     fächer_am_tag = tagesauswahl(wochentag)
                     selectionlist = fach_select(fächer_am_tag, fach)
-                    dispatcher.utter_message(f'Die gefragte Vorlesung: {selectionlist[0]}, findet {wochentag} im Raum {selectionlist[2]} statt')
-
                     
+                    if selectionlist == 'Eintrag nicht gefunden': 
+                        dispatcher.utter_message(f'Ach du meine Feder. Es tut mir leid, aber ich habe für {wochentag} leider keinen Termin gefunden, der sich mit deiner Anfrage deckt')
+                        dispatcher.utter_message(f'Du kannst mich aber gerne Fragen: "welche Fächer habe ich {wochentag}" für eine allgemeine Übersicht')
+                    else: 
+                        dispatcher.utter_message(f'Die gefragte Vorlesung: {selectionlist[0]}, findet {wochentag} im Raum {selectionlist[2]} statt')
 
 
                 else: 
@@ -317,10 +317,8 @@ class ActionWannWo(Action):
                             dispatcher.utter_message(f'Die gefragte Vorlesung: {selectionlist[0]}, findet am {wochentag_richtig_groß} im Raum {selectionlist[2]} statt')
                         if anfrage == 'wann': 
                             dispatcher.utter_message(f'Die gefragte Vorlesung: {selectionlist[0]}, findet am {wochentag_richtig_groß} um {selectionlist[1][11:-3]} statt')
-                    
                     elif selectionlist == 'Eintrag nicht gefunden': 
                         dispatcher.utter_custom_message('Du hast das Fach gar nicht an diesem Tag. Du kannst auch Fragen: welche Fächer habe ich (Wochentag) um eine allgemeine Übersicht zu erhalten')
-
                     else: dispatcher.utter_message('UHUUU da ist wohl irgendwas schief gegangen. Du kannst auch Fragen: welche Fächer habe ich (Wochentag) um eine allgemeine Übersicht zu erhalten')
         except: 
 
