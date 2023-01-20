@@ -85,6 +85,11 @@ a:hover{
 .white-text2{
   margin-top: -3vw;
 }
+#btnn{
+  margin-left: 11.5vw;
+  margin-top: 3vw;
+  opacity: 0.03;
+}
 
 /*  Gold: #f9b940, Hell-Lila: #9f41da, Mittel-Lila: #5c2d8c, Dunkel-Lila: #302b4e  */
 </style>
@@ -92,6 +97,7 @@ a:hover{
   </head>
 
   <!-- On-Off Background Picture Switch
+  Don't uncomment -> Code is BS
 
     <script>
     
@@ -107,6 +113,15 @@ function ChangeBG(){
 
   </script> -->
 
+  
+  <script>
+    function play() {
+      let audio = new Audio('KauzKurz.mp3');
+      audio.play();
+    }
+  </script>
+
+
 
   <body>
 
@@ -114,6 +129,11 @@ function ChangeBG(){
       <a href="https://github.com/ID-Start-Winter22/chat-team-1/wiki#und-wir-sind-die-entwickler-" target="_blank">About Us</a>
       <a href="https://github.com/ID-Start-Winter22/chat-team-1/wiki" target="_blank">Github-Wiki</a>
       <a href="index.html">Back to Archie</a>
+    </div>
+
+    <div>
+      <button id="btnn" onclick="play()">Hello</button>
+      <audio></audio>
     </div>
 
     <div class="container">
